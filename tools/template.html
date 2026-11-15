@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Связи российской элиты</title>
+<meta name="description" content="Интерактивная схема связей: 298 человек и 87 точек пересечения. Три слоя, фильтры, карточки, поиск пути между людьми.">
+<style>
+:root{
+  --bg:#f6f4ef;--panel:#ffffff;--ink:#1c1b18;--muted:#6b6760;--line:#e1ddd3;--accent:#1f4e9c;--accent-ink:#ffffff;
+  --g0:#2d6cdf;--g1:#b3261e;--g2:#5f6b7a;--g3:#d98b1a;--g4:#2e8b57;--g5:#8e44ad;--g6:#1aa3a3;
+  --node:#9a948a;--edge:#c9c3b7;--direct:#1c1b18;--chip:#eeeae2;--shadow:0 8px 28px rgba(0,0,0,.12);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#15161a;--panel:#1e2026;--ink:#ecebe6;--muted:#9a9890;--line:#2e3139;--accent:#7aa6ff;--accent-ink:#0d1a33;
+  --g0:#6f9df5;--g1:#ef6a60;--g2:#9aa6b6;--g3:#f0a93a;--g4:#4fbf7d;--g5:#b784d6;--g6:#48c8c8;
+  --node:#6f6b64;--edge:#3a3d46;--direct:#ecebe6;--chip:#2a2d35;--shadow:0 8px 28px rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  --bg:#15161a;--panel:#1e2026;--ink:#ecebe6;--muted:#9a9890;--line:#2e3139;--accent:#7aa6ff;--accent-ink:#0d1a33;
+  --g0:#6f9df5;--g1:#ef6a60;--g2:#9aa6b6;--g3:#f0a93a;--g4:#4fbf7d;--g5:#b784d6;--g6:#48c8c8;
+  --node:#6f6b64;--edge:#3a3d46;--direct:#ecebe6;--chip:#2a2d35;--shadow:0 8px 28px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+header{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap;position:sticky;top:0;z-index:20}
+header h1{font-size:17px;margin:0;font-weight:650;letter-spacing:-.01em}
+header .sub{color:var(--muted);font-size:13px}
+nav.tabs{display:flex;gap:4px;margin-left:auto}
+nav.tabs button{background:none;border:1px solid transparent;color:var(--muted);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit;font-size:14px}
+nav.tabs button[aria-selected="true"]{background:var(--chip);color:var(--ink);border-color:var(--line)}
+button.icon{background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:5px 9px;cursor:pointer;color:var(--ink);font:inherit;font-size:13px}
+main{flex:1;display:flex;min-height:0}
+section.view{display:none;flex:1;min-height:0}
+section.view.active{display:flex}
+/* graph view */
+#graphView{position:relative}
+#graphView .canvas{flex:1;position:relative;min-width:0}
+svg#graph{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+svg#graph:active{cursor:grabbing}
+aside.controls{width:300px;flex:none;border-right:1px solid var(--line);background:var(--panel);overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:14px}
+aside.controls h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 6px;font-weight:600}
+.search{position:relative}
+.search input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.search ul{position:absolute;left:0;right:0;top:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);list-style:none;margin:4px 0 0;padding:4px 0;max-height:260px;overflow:auto;z-index:30;display:none}
+.search ul li{padding:6px 10px;cursor:pointer;font-size:14px;display:flex;justify-content:space-between;gap:8px}
+.search ul li span{color:var(--muted);font-size:12px}
+.search ul li:hover,.search ul li.hl{background:var(--chip)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:3px 10px;font-size:13px;cursor:pointer;user-select:none}
+.chip .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chip.off{opacity:.4}
+.chip.sq .dot{border-radius:2px;transform:rotate(45deg);width:9px;height:9px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+.row label{display:flex;gap:4px;align-items:center;cursor:pointer}
+.stat{font-size:13px;color:var(--muted)}
+.legend{font-size:12px;color:var(--muted);line-height:1.5}
+.legend b{color:var(--ink);font-weight:600}
+.pathbox{display:flex;flex-direction:column;gap:6px}
+.pathbox input{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit;font-size:13px}
+.pathbox .res{font-size:13px}
+.pathbox .res ol{margin:4px 0 0;padding-left:18px}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}
+.btn.ghost{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+/* card */
+.card{position:absolute;top:12px;right:12px;width:360px;max-width:calc(100% - 24px);max-height:calc(100% - 24px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;display:none;z-index:10}
+.card.open{display:block}
+.card h2{margin:0 0 2px;font-size:18px;line-height:1.25;padding-right:28px}
+.card .meta{color:var(--muted);font-size:13px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.card .tag{display:inline-block;border-radius:6px;padding:1px 7px;font-size:12px;background:var(--chip)}
+.card .tag.g{color:#fff;background:var(--c)}
+.card .close{position:absolute;top:8px;right:8px;background:none;border:0;font-size:20px;cursor:pointer;color:var(--muted)}
+.card dl{margin:8px 0 0}
+.card dt{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:10px}
+.card dd{margin:2px 0 0;font-size:14px}
+.card ul{margin:2px 0 0;padding-left:0;list-style:none}
+.card li{font-size:14px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.card li:last-child{border-bottom:0}
+.card li a,.card dd a{color:var(--accent);cursor:pointer;text-decoration:none}
+.card li a:hover{text-decoration:underline}
+.card li .r{color:var(--muted);font-size:13px}
+.card .actions{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.toolbar{position:absolute;left:12px;bottom:12px;display:flex;gap:6px;z-index:5}
+.hint{position:absolute;left:12px;top:12px;font-size:12px;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:4px 8px;z-index:5;max-width:60%}
+/* table view */
+#listView{flex-direction:column;overflow:auto;padding:16px}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--panel);cursor:pointer;font-weight:600;font-size:13px;white-space:nowrap}
+th.sorted::after{content:" ↕";color:var(--muted)}
+tr:hover td{background:var(--chip)}
+td.name{white-space:nowrap;font-weight:600}
+td.name a{color:var(--accent);cursor:pointer;text-decoration:none}
+td .gd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--c)}
+.listtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.listtools input,.listtools select{padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:14px}
+/* summary */
+#summaryView{overflow:auto;padding:0}
+.prose{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+.prose h2{font-size:24px;margin:28px 0 8px;letter-spacing:-.01em}
+.prose h3{font-size:17px;margin:22px 0 6px}
+.prose p,.prose li{font-size:15.5px;line-height:1.6}
+.prose ul{padding-left:20px}
+.prose table{font-size:14px}
+.prose .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+.prose .kpi div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.prose .kpi b{display:block;font-size:24px;font-weight:650;letter-spacing:-.02em}
+.prose .kpi span{font-size:12.5px;color:var(--muted)}
+.prose .sw{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);vertical-align:-1px;margin-right:4px}
+.bars{display:flex;flex-direction:column;gap:5px;margin:10px 0}
+.bars div{display:grid;grid-template-columns:150px 1fr 40px;gap:8px;align-items:center;font-size:13px}
+.bars i{display:block;height:12px;background:var(--accent);border-radius:3px}
+@media (max-width:860px){
+  main{flex-direction:column}
+  aside.controls{width:100%;border-right:0;border-bottom:1px solid var(--line);max-height:38vh}
+  #graphView{flex-direction:column}
+  #graphView .canvas{min-height:55vh}
+  .card{top:auto;bottom:0;right:0;left:0;width:100%;max-width:100%;max-height:60%;border-radius:12px 12px 0 0}
+  nav.tabs{margin-left:0;width:100%}
+  .hint{display:none}
+  .bars div{grid-template-columns:110px 1fr 36px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Связи российской элиты</h1><div class="sub" id="subtitle"></div></div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="graphView">Схема</button>
+    <button role="tab" aria-selected="false" data-tab="listView">Список</button>
+    <button role="tab" aria-selected="false" data-tab="summaryView">Сводка</button>
+    <button class="icon" id="themeBtn" title="Переключить тему">Тема</button>
+  </nav>
+</header>
+<main>
+<section class="view active" id="graphView">
+  <aside class="controls">
+    <div>
+      <h3>Поиск</h3>
+      <div class="search"><input id="q" placeholder="Фамилия, компания, узел…" autocomplete="off"><ul id="qlist"></ul></div>
+    </div>
+    <div>
+      <h3>Слои</h3>
+      <div class="row">
+        <label><input type="checkbox" class="tier" value="0" checked> Ядро (98)</label>
+        <label><input type="checkbox" class="tier" value="1" checked> Первая сотня</label>
+        <label><input type="checkbox" class="tier" value="2"> Второй эшелон</label>
+      </div>
+    </div>
+    <div>
+      <h3>Группы</h3>
+      <div class="chips" id="groupChips"></div>
+    </div>
+    <div>
+      <h3>Точки пересечения</h3>
+      <div class="chips" id="catChips"></div>
+    </div>
+    <div>
+      <h3>Надёжность данных</h3>
+      <div class="row">
+        <label><input type="checkbox" class="rel" value="высокая" checked> высокая</label>
+        <label><input type="checkbox" class="rel" value="средняя" checked> средняя</label>
+        <label><input type="checkbox" class="rel" value="низкая" checked> низкая</label>
+      </div>
+    </div>
+    <div>
+      <h3>Год рождения</h3>
+      <div class="row"><input type="number" id="yFrom" value="1939" style="width:80px"> — <input type="number" id="yTo" value="1995" style="width:80px"> <label><input type="checkbox" id="yUnknown" checked> без года</label></div>
+    </div>
+    <div>
+      <h3>Как связаны</h3>
+      <div class="pathbox">
+        <input id="pA" placeholder="Первый человек" list="namesList">
+        <input id="pB" placeholder="Второй человек" list="namesList">
+        <datalist id="namesList"></datalist>
+        <div class="row"><button class="btn" id="pathBtn">Найти путь</button><button class="btn ghost" id="pathClear">Сбросить</button></div>
+        <div class="res" id="pathRes"></div>
+      </div>
+    </div>
+    <div class="stat" id="stat"></div>
+    <div class="legend">
+      <b>Круг</b> — человек, размер по числу связей. <b>Ромб</b> — точка пересечения: вуз, ведомство, сделка. <b>Пунктир</b> — прямая связь: родство, партнёрство, начальник и подчинённый. Клик по узлу открывает карточку, двойной клик выделяет окружение. Колесо мыши масштабирует, узлы можно перетаскивать.
+    </div>
+  </aside>
+  <div class="canvas">
+    <div class="hint" id="hint">Кликните по кругу или ромбу. Фильтры слева скрывают людей вместе с их связями.</div>
+    <svg id="graph"></svg>
+    <div class="toolbar">
+      <button class="icon" id="fitBtn">Вписать</button>
+      <button class="icon" id="labelsBtn">Подписи: все</button>
+      <button class="icon" id="resetBtn">Сброс выделения</button>
+    </div>
+    <div class="card" id="card"><button class="close" id="cardClose" aria-label="Закрыть">×</button><div id="cardBody"></div></div>
+  </div>
+</section>
+
+<section class="view" id="listView">
+  <div class="listtools">
+    <input id="lq" placeholder="Поиск по имени и тексту карточки" style="min-width:260px">
+    <select id="lgroup"><option value="">Все группы</option></select>
+    <select id="ltier"><option value="">Все слои</option><option value="0">Ядро</option><option value="1">Первая сотня</option><option value="2">Второй эшелон</option></select>
+    <select id="lrel"><option value="">Любая надёжность</option><option>высокая</option><option>средняя</option><option>низкая</option></select>
+    <span class="stat" id="lstat"></span>
+  </div>
+  <table id="tbl"><thead><tr>
+    <th data-k="name">Имя</th><th data-k="year">Год</th><th data-k="group">Группа</th><th data-k="tier">Слой</th><th data-k="deg">Связей</th><th data-k="now">Сейчас</th><th data-k="youth">В 18–25 лет</th><th data-k="rise">Взлёт</th><th data-k="reliability">Данные</th>
+  </tr></thead><tbody></tbody></table>
+</section>
+
+<section class="view" id="summaryView"><div class="prose" id="prose"></div></section>
+</main>
+
+<script id="data" type="application/json">__DATA__</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const GROUPS = ['Петербургский круг','Силовики','Технократы и чиновники','Финансисты и трейдеры 90-х','Отраслевики','Новая экономика','Второе поколение'];
+const GCOL = GROUPS.map((_,i)=>`var(--g${i})`);
+const CATS = [...new Set(DATA.nodes.map(n=>n.cat))];
+const TIERS = ['ядро','первая сотня','второй эшелон'];
+const P = new Map(DATA.people.map(p=>[p.id,p]));
+const NODE = new Map(DATA.nodes.map(n=>[n.name,n]));
+// adjacency
+const adj = new Map(); // id -> [{id,label,via}]
+function link(a,b,label,via){ if(!adj.has(a)) adj.set(a,[]); adj.get(a).push({id:b,label,via}); }
+for(const n of DATA.nodes){ for(const [m,r] of n.members){ link(m,'#'+n.name,r,'node'); link('#'+n.name,m,r,'node'); } }
+for(const [a,b,l] of DATA.direct){ link(a,b,l,'direct'); link(b,a,l,'direct'); }
+for(const p of DATA.people){ p.deg=(adj.get(p.id)||[]).length; p.gi=GROUPS.indexOf(p.group); }
+document.getElementById('subtitle').textContent = `${DATA.people.length} человек, ${DATA.nodes.length} точек пересечения, ${DATA.direct.length} прямых связей. Состояние на ноябрь 2026.`;
+
+// ---------- theme ----------
+const root=document.documentElement;
+try{ const t=localStorage.getItem('theme'); if(t) root.dataset.theme=t; }catch(e){}
+document.getElementById('themeBtn').onclick=()=>{ const dark=matchMedia('(prefers-color-scheme: dark)').matches; const cur=root.dataset.theme||(dark?'dark':'light'); const nx=cur==='dark'?'light':'dark'; root.dataset.theme=nx; try{localStorage.setItem('theme',nx)}catch(e){} };
+
+// ---------- tabs ----------
+document.querySelectorAll('nav.tabs [role=tab]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav.tabs [role=tab]').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('active',s.id===b.dataset.tab));
+  if(b.dataset.tab==='graphView') setTimeout(fit,50);
+});
+
+// ---------- filters ----------
+const state={tiers:new Set(['0','1']),groups:new Set(GROUPS),cats:new Set(CATS),rel:new Set(['высокая','средняя','низкая']),yFrom:1939,yTo:1995,yUnknown:true,focus:null,path:null,labels:'all'};
+const gc=document.getElementById('groupChips');
+GROUPS.forEach((g,i)=>{ const c=document.createElement('span'); c.className='chip'; c.style.setProperty('--c',GCOL[i]); c.innerHTML=`<span class="dot"></span>${g}`; c.onclick=()=>{ if(state.groups.has(g)) state.groups.delete(g); else state.groups.add(g); c.classList.toggle('off',!state.groups.has(g)); refresh(); }; c.ondblclick=()=>{ state.groups=new Set([g]); [...gc.children].forEach((x,j)=>x.classList.toggle('off',j!==i)); refresh(); }; gc.appendChild(c); });
+const cc=document.getElementById('catChips');
+CATS.forEach(cat=>{ const c=document.createElement('span'); c.className='chip sq'; c.style.setProperty('--c','var(--node)'); c.innerHTML=`<span class="dot"></span>${cat}`; c.onclick=()=>{ if(state.cats.has(cat)) state.cats.delete(cat); else state.cats.add(cat); c.classList.toggle('off',!state.cats.has(cat)); refresh(); }; cc.appendChild(c); });
+document.querySelectorAll('.tier').forEach(x=>x.onchange=()=>{ state.tiers=new Set([...document.querySelectorAll('.tier:checked')].map(i=>i.value)); refresh(); });
+document.querySelectorAll('.rel').forEach(x=>x.onchange=()=>{ state.rel=new Set([...document.querySelectorAll('.rel:checked')].map(i=>i.value)); refresh(); });
+document.getElementById('yFrom').onchange=e=>{state.yFrom=+e.target.value||0;refresh()};
+document.getElementById('yTo').onchange=e=>{state.yTo=+e.target.value||3000;refresh()};
+document.getElementById('yUnknown').onchange=e=>{state.yUnknown=e.target.checked;refresh()};
+
+function personVisible(p){
+  if(!state.tiers.has(String(p.tier))) return false;
+  if(!state.groups.has(p.group)) return false;
+  if(!state.rel.has(p.reliability)) return false;
+  if(p.year==null) return state.yUnknown;
+  return p.year>=state.yFrom && p.year<=state.yTo;
+}
+
+// ---------- graph ----------
+const svg=d3.select('#graph'); const gRoot=svg.append('g');
+const gEdges=gRoot.append('g'), gNodes=gRoot.append('g'), gLabels=gRoot.append('g');
+const zoom=d3.zoom().scaleExtent([0.15,5]).on('zoom',e=>{gRoot.attr('transform',e.transform); updateLabelVisibility(e.transform.k);});
+svg.call(zoom).on('dblclick.zoom',null);
+let sim, curNodes=[], curEdges=[], nodeSel, edgeSel, labelSel;
+const W=()=>svg.node().clientWidth, H=()=>svg.node().clientHeight;
+const posCache=new Map();
+
+function buildGraph(){
+  const people=DATA.people.filter(personVisible);
+  const pset=new Set(people.map(p=>p.id));
+  const nodes=[]; const edges=[];
+  for(const p of people) nodes.push({id:p.id,kind:'p',ref:p,r:4+Math.min(10,Math.sqrt(p.deg)*1.6)});
+  for(const n of DATA.nodes){ if(!state.cats.has(n.cat)) continue; const mem=n.members.filter(m=>pset.has(m[0])); if(mem.length<1) continue; if(mem.length<2 && !(state.focus===('#'+n.name))) continue; nodes.push({id:'#'+n.name,kind:'n',ref:n,r:6+Math.min(12,mem.length*0.8)}); for(const [m,r] of mem) edges.push({source:m,target:'#'+n.name,kind:'node',label:r}); }
+  for(const [a,b,l] of DATA.direct) if(pset.has(a)&&pset.has(b)) edges.push({source:a,target:b,kind:'direct',label:l});
+  for(const n of nodes){ const c=posCache.get(n.id); if(c){n.x=c.x;n.y=c.y;} else { const gi=n.kind==='p'?n.ref.gi:3; const ang=gi/7*Math.PI*2; n.x=W()/2+Math.cos(ang)*250+(Math.random()-.5)*80; n.y=H()/2+Math.sin(ang)*250+(Math.random()-.5)*80; } }
+  curNodes=nodes; curEdges=edges;
+  if(sim) sim.stop();
+  sim=d3.forceSimulation(nodes)
+    .force('link',d3.forceLink(edges).id(d=>d.id).distance(d=>d.kind==='direct'?45:60).strength(d=>d.kind==='direct'?.6:.35))
+    .force('charge',d3.forceManyBody().strength(d=>d.kind==='n'?-260:-120))
+    .force('collide',d3.forceCollide(d=>d.r+4))
+    .force('center',d3.forceCenter(W()/2,H()/2))
+    .force('x',d3.forceX(W()/2).strength(.03)).force('y',d3.forceY(H()/2).strength(.03))
+    .alpha(1).alphaDecay(.03).on('tick',tick);
+  edgeSel=gEdges.selectAll('line').data(edges,d=>d.source.id+'|'+d.target.id).join('line')
+    .attr('stroke',d=>d.kind==='direct'?'var(--direct)':'var(--edge)').attr('stroke-width',d=>d.kind==='direct'?1.3:1)
+    .attr('stroke-dasharray',d=>d.kind==='direct'?'4 3':null).attr('stroke-opacity',d=>d.kind==='direct'?.7:.8);
+  nodeSel=gNodes.selectAll('g.n').data(nodes,d=>d.id).join(enter=>{
+      const g=enter.append('g').attr('class','n').style('cursor','pointer');
+      g.filter(d=>d.kind==='p').append('circle');
+      g.filter(d=>d.kind==='n').append('rect');
+      return g;
+    });
+  nodeSel.select('circle').attr('r',d=>d.r).attr('fill',d=>GCOL[d.ref.gi]).attr('stroke','var(--panel)').attr('stroke-width',1.5)
+    .attr('stroke-dasharray',d=>d.ref.reliability==='низкая'?'2 2':null).attr('fill-opacity',d=>d.ref.tier===2?.75:1);
+  nodeSel.select('rect').attr('width',d=>d.r*1.5).attr('height',d=>d.r*1.5).attr('x',d=>-d.r*.75).attr('y',d=>-d.r*.75).attr('transform','rotate(45)').attr('fill','var(--node)').attr('stroke','var(--panel)').attr('stroke-width',1.5).attr('rx',2);
+  nodeSel.on('click',(e,d)=>{e.stopPropagation(); openCard(d.id);}).on('dblclick',(e,d)=>{e.stopPropagation(); setFocus(d.id);})
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y;}).on('end',(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;}));
+  nodeSel.append('title').text(d=>d.kind==='p'?`${d.id} (${d.ref.year||'?'}) — ${d.ref.now}`:d.id.slice(1));
+  nodeSel.select('title').text(d=>d.kind==='p'?`${d.id} (${d.ref.year||'?'}) — ${d.ref.now}`:d.id.slice(1));
+  labelSel=gLabels.selectAll('text').data(nodes,d=>d.id).join('text').text(d=>d.kind==='p'?shortName(d.id):d.id.slice(1))
+    .attr('font-size',d=>d.kind==='n'?10:11).attr('font-weight',d=>d.kind==='n'?600:400).attr('fill',d=>d.kind==='n'?'var(--muted)':'var(--ink)')
+    .attr('text-anchor','middle').attr('pointer-events','none').attr('paint-order','stroke').attr('stroke','var(--bg)').attr('stroke-width',3).attr('stroke-linejoin','round');
+  applyHighlight(); updateLabelVisibility(d3.zoomTransform(svg.node()).k);
+  document.getElementById('stat').textContent=`Показано: ${people.length} человек, ${nodes.length-people.length} узлов, ${edges.length} связей.`;
+}
+function shortName(n){ const parts=n.replace(/\(.*?\)/g,'').trim().split(/\s+/); if(parts.length>=2 && parts[0]!=='Патриарх') return parts[0][0]+'. '+parts.slice(-1)[0]; return n; }
+function tick(){
+  edgeSel.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+  nodeSel.attr('transform',d=>`translate(${d.x},${d.y})`);
+  labelSel.attr('x',d=>d.x).attr('y',d=>d.y+d.r+11);
+  for(const n of curNodes) posCache.set(n.id,{x:n.x,y:n.y});
+}
+function updateLabelVisibility(k){
+  if(!labelSel) return;
+  labelSel.attr('display',d=>{
+    if(state.labels==='none') return 'none';
+    if(state.focus||state.path) return (hlSet && hlSet.has(d.id))?null:'none';
+    if(state.labels==='all') return k>.55||d.kind==='n'||d.r>9?null:'none';
+    return d.kind==='n'||d.r>10?null:'none';
+  });
+}
+let hlSet=null;
+function applyHighlight(){
+  hlSet=null;
+  if(state.path){ hlSet=new Set(state.path); }
+  else if(state.focus){ hlSet=new Set([state.focus]); for(const e of (adj.get(state.focus)||[])) hlSet.add(e.id); }
+  nodeSel.attr('opacity',d=>!hlSet||hlSet.has(d.id)?1:.12);
+  edgeSel.attr('stroke-opacity',d=>{ if(!hlSet) return d.kind==='direct'?.7:.8; const on=hlSet.has(d.source.id)&&hlSet.has(d.target.id); if(state.path) { const i=state.path.indexOf(d.source.id), j=state.path.indexOf(d.target.id); return (i>=0&&j>=0&&Math.abs(i-j)===1)?1:.05; } return on?1:.05; })
+    .attr('stroke-width',d=>{ if(state.path){ const i=state.path.indexOf(d.source.id), j=state.path.indexOf(d.target.id); return (i>=0&&j>=0&&Math.abs(i-j)===1)?3:1; } return d.kind==='direct'?1.3:1; })
+    .attr('stroke',d=>{ if(state.path){ const i=state.path.indexOf(d.source.id), j=state.path.indexOf(d.target.id); if(i>=0&&j>=0&&Math.abs(i-j)===1) return 'var(--accent)'; } return d.kind==='direct'?'var(--direct)':'var(--edge)'; });
+  updateLabelVisibility(d3.zoomTransform(svg.node()).k);
+}
+function setFocus(id){ state.path=null; state.focus=(state.focus===id)?null:id; document.getElementById('pathRes').textContent=''; applyHighlight(); }
+function refresh(){ buildGraph(); renderList(); }
+function fit(){ if(!curNodes.length||!W()||!H()) return; const xs=curNodes.map(n=>n.x).filter(Number.isFinite), ys=curNodes.map(n=>n.y).filter(Number.isFinite); if(!xs.length) return; const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys); const k=Math.min(W()/((x1-x0)+120),H()/((y1-y0)+120),1.6); if(!Number.isFinite(k)) return; svg.transition().duration(500).call(zoom.transform,d3.zoomIdentity.translate(W()/2-k*(x0+x1)/2,H()/2-k*(y0+y1)/2).scale(k)); }
+document.getElementById('fitBtn').onclick=fit;
+document.getElementById('resetBtn').onclick=()=>{state.focus=null;state.path=null;document.getElementById('pathRes').textContent='';applyHighlight();};
+document.getElementById('labelsBtn').onclick=e=>{ state.labels={all:'big',big:'none',none:'all'}[state.labels]; e.target.textContent='Подписи: '+{all:'все',big:'крупные',none:'нет'}[state.labels]; updateLabelVisibility(d3.zoomTransform(svg.node()).k); };
+svg.on('click',()=>{ closeCard(); });
+window.addEventListener('resize',()=>{ if(sim){ sim.force('center',d3.forceCenter(W()/2,H()/2)); sim.alpha(.2).restart(); } });
+
+// ---------- card ----------
+const card=document.getElementById('card'), cardBody=document.getElementById('cardBody');
+document.getElementById('cardClose').onclick=closeCard;
+function closeCard(){ card.classList.remove('open'); }
+function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function personLink(id){ const p=P.get(id); return `<a data-id="${esc(id)}">${esc(id)}</a>${p?` <span class="r">(${p.year||'?'})</span>`:''}`; }
+function openCard(id, ensureVisible=true){
+  card.classList.add('open'); card.scrollTop=0;
+  if(id[0]==='#'){
+    const n=NODE.get(id.slice(1)); const vis=new Set(DATA.people.filter(personVisible).map(p=>p.id));
+    const mem=[...n.members].sort((a,b)=>(P.get(a[0]).year||9999)-(P.get(b[0]).year||9999));
+    cardBody.innerHTML=`<h2>${esc(n.name)}</h2><div class="meta"><span class="tag">${esc(n.cat)}</span><span>${n.members.length} чел.</span></div><p style="margin:6px 0;font-size:14px">${esc(n.desc)}</p>
+      <dl><dt>Участники</dt><dd><ul>${mem.map(([m,r])=>`<li${vis.has(m)?'':' style="opacity:.5"'}>${personLink(m)}${r?` <span class="r">— ${esc(r)}</span>`:''}</li>`).join('')}</ul></dd></dl>
+      <div class="actions"><button class="btn ghost" data-focus="${esc(id)}">Выделить окружение</button></div>`;
+  } else {
+    const p=P.get(id); const links=(adj.get(id)||[]);
+    const nodes=links.filter(l=>l.via==='node'), directs=links.filter(l=>l.via==='direct');
+    // people met through nodes
+    const met=new Map(); for(const l of nodes){ for(const m of NODE.get(l.id.slice(1)).members){ if(m[0]===id) continue; if(!met.has(m[0])) met.set(m[0],[]); met.get(m[0]).push(l.id.slice(1)); } }
+    const metArr=[...met.entries()].sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]));
+    cardBody.innerHTML=`<h2>${esc(p.name)}</h2><div class="meta"><span class="tag g" style="--c:${GCOL[p.gi]}">${esc(p.group)}</span><span>${p.year??'год рождения уточнить'}</span><span class="tag">${TIERS[p.tier]}</span>${p.reliability!=='высокая'?`<span class="tag">данные: ${esc(p.reliability)}</span>`:''}</div>
+      <dl>
+        <dt>Сейчас</dt><dd>${esc(p.now)}</dd>
+        <dt>В 18–25 лет</dt><dd>${esc(p.youth)}</dd>
+        <dt>Взлёт</dt><dd>${esc(p.rise)}</dd>
+        ${p.connect?`<dt>Как подключён</dt><dd>${esc(p.connect)}</dd>`:''}
+        <dt>Точки пересечения (${nodes.length})</dt><dd><ul>${nodes.map(l=>`<li><a data-id="${esc(l.id)}">${esc(l.id.slice(1))}</a>${l.label?` <span class="r">— ${esc(l.label)}</span>`:''}</li>`).join('')||'<li class="r">общих узлов со старой сетью нет</li>'}</ul></dd>
+        ${directs.length?`<dt>Прямые связи (${directs.length})</dt><dd><ul>${directs.map(l=>`<li>${personLink(l.id)}<br><span class="r">${esc(l.label)}</span></li>`).join('')}</ul></dd>`:''}
+        ${metArr.length?`<dt>С кем пересекается (${metArr.length})</dt><dd><ul>${metArr.slice(0,40).map(([m,via])=>`<li>${personLink(m)}${via.length>1?` <span class="r">×${via.length}</span>`:''}<br><span class="r">${esc(via.join(', '))}</span></li>`).join('')}${metArr.length>40?`<li class="r">и ещё ${metArr.length-40}</li>`:''}</ul></dd>`:''}
+      </dl>
+      <div class="actions"><button class="btn ghost" data-focus="${esc(id)}">Выделить окружение</button><button class="btn ghost" data-pa="${esc(id)}">Путь от…</button><button class="btn ghost" data-pb="${esc(id)}">…до</button></div>`;
+  }
+  cardBody.querySelectorAll('a[data-id]').forEach(a=>a.onclick=()=>{ const t=a.dataset.id; if(t[0]!=='#' && !personVisible(P.get(t))) revealPerson(P.get(t)); openCard(t); centerOn(t); });
+  cardBody.querySelectorAll('[data-focus]').forEach(b=>b.onclick=()=>setFocus(b.dataset.focus));
+  cardBody.querySelectorAll('[data-pa]').forEach(b=>b.onclick=()=>{document.getElementById('pA').value=b.dataset.pa;});
+  cardBody.querySelectorAll('[data-pb]').forEach(b=>b.onclick=()=>{document.getElementById('pB').value=b.dataset.pb; if(document.getElementById('pA').value) findPath();});
+}
+function revealPerson(p){ // widen filters so the person shows
+  let changed=false;
+  if(!state.tiers.has(String(p.tier))){ state.tiers.add(String(p.tier)); document.querySelector(`.tier[value="${p.tier}"]`).checked=true; changed=true; }
+  if(!state.groups.has(p.group)){ state.groups.add(p.group); gc.children[p.gi].classList.remove('off'); changed=true; }
+  if(!state.rel.has(p.reliability)){ state.rel.add(p.reliability); document.querySelector(`.rel[value="${p.reliability}"]`).checked=true; changed=true; }
+  if(p.year!=null && (p.year<state.yFrom||p.year>state.yTo)){ state.yFrom=Math.min(state.yFrom,p.year); state.yTo=Math.max(state.yTo,p.year); document.getElementById('yFrom').value=state.yFrom; document.getElementById('yTo').value=state.yTo; changed=true; }
+  if(p.year==null && !state.yUnknown){ state.yUnknown=true; document.getElementById('yUnknown').checked=true; changed=true; }
+  if(changed) refresh();
+}
+function centerOn(id){ const n=curNodes.find(x=>x.id===id); if(!n||!Number.isFinite(n.x)||!W()) return; const t=d3.zoomTransform(svg.node()); const k=Math.max(t.k,1); svg.transition().duration(500).call(zoom.transform,d3.zoomIdentity.translate(W()/2-k*n.x,H()/2-k*n.y).scale(k)); }
+
+// ---------- search ----------
+const q=document.getElementById('q'), ql=document.getElementById('qlist');
+const index=[...DATA.people.map(p=>({id:p.id,t:p.name,sub:`${p.year||'?'} · ${p.group}`,hay:(p.name+' '+p.now+' '+p.rise+' '+p.youth).toLowerCase()})), ...DATA.nodes.map(n=>({id:'#'+n.name,t:n.name,sub:'узел · '+n.cat,hay:(n.name+' '+n.desc).toLowerCase()}))];
+let hl=-1;
+q.oninput=()=>{ const v=q.value.trim().toLowerCase(); hl=-1; if(v.length<2){ql.style.display='none';return;} const res=index.filter(x=>x.hay.includes(v)).sort((a,b)=>(b.t.toLowerCase().includes(v)-a.t.toLowerCase().includes(v))).slice(0,12); ql.innerHTML=res.map(r=>`<li data-id="${esc(r.id)}">${esc(r.t)}<span>${esc(r.sub)}</span></li>`).join(''); ql.style.display=res.length?'block':'none'; ql.querySelectorAll('li').forEach(li=>li.onclick=()=>pick(li.dataset.id)); };
+q.onkeydown=e=>{ const items=ql.querySelectorAll('li'); if(e.key==='ArrowDown'){hl=Math.min(hl+1,items.length-1);} else if(e.key==='ArrowUp'){hl=Math.max(hl-1,0);} else if(e.key==='Enter'){ if(items[hl>=0?hl:0]) pick(items[hl>=0?hl:0].dataset.id); return;} else if(e.key==='Escape'){ql.style.display='none';return;} else return; items.forEach((li,i)=>li.classList.toggle('hl',i===hl)); };
+function pick(id){ ql.style.display='none'; q.value=''; if(id[0]!=='#') revealPerson(P.get(id)); openCard(id); setFocus(id); state.focus=id; applyHighlight(); centerOn(id); }
+document.addEventListener('click',e=>{ if(!e.target.closest('.search')) ql.style.display='none'; });
+document.getElementById('namesList').innerHTML=DATA.people.map(p=>`<option value="${esc(p.id)}">`).join('');
+
+// ---------- path ----------
+function findPath(){
+  const a=document.getElementById('pA').value.trim(), b=document.getElementById('pB').value.trim(); const out=document.getElementById('pathRes');
+  const A=resolveName(a), B=resolveName(b);
+  if(!A||!B){ out.textContent='Не нашёл такого человека. Выберите имя из подсказки.'; return; }
+  // BFS over full graph (all tiers), prefer fewer hops
+  // BFS: first only through currently visible layers, then through everything
+  const bfs=(allow)=>{ const prev=new Map([[A,null]]); const qq=[A]; while(qq.length){ const x=qq.shift(); if(x===B) return prev; for(const e of (adj.get(x)||[])){ if(prev.has(e.id)) continue; if(e.id[0]!=='#' && e.id!==B && !allow(P.get(e.id))) continue; prev.set(e.id,x); qq.push(e.id);} } return null; };
+  let prev=bfs(p=>state.tiers.has(String(p.tier))) || bfs(()=>true); let found=!!prev;
+  if(!found){ out.textContent='Пути нет: задокументированных пересечений между ними не найдено.'; state.path=null; applyHighlight(); return; }
+  const path=[]; for(let x=B;x!=null;x=prev.get(x)) path.unshift(x);
+  for(const id of path) if(id[0]!=='#') revealPerson(P.get(id));
+  // ensure nodes on path are visible: cats
+  let catChanged=false; for(const id of path) if(id[0]==='#'){ const c=NODE.get(id.slice(1)).cat; if(!state.cats.has(c)){ state.cats.add(c); catChanged=true; } }
+  if(catChanged){ [...cc.children].forEach((x,i)=>x.classList.toggle('off',!state.cats.has(CATS[i]))); refresh(); }
+  state.focus=null; state.path=path; applyHighlight();
+  const steps=[]; for(let i=1;i<path.length;i++){ const e=(adj.get(path[i-1])||[]).find(z=>z.id===path[i]); steps.push(`<li>${esc(path[i][0]==='#'?path[i].slice(1):path[i])}${e&&e.label?` <span style="color:var(--muted)">— ${esc(e.label)}</span>`:''}</li>`); }
+  const hops=path.filter(x=>x[0]!=='#').length-1;
+  out.innerHTML=`<b>${esc(A)}</b> → <b>${esc(B)}</b>: ${hops} ${hops===1?'шаг':hops<5?'шага':'шагов'}<ol>${steps.join('')}</ol>`;
+}
+function resolveName(v){ if(!v) return null; if(P.has(v)) return v; const l=v.toLowerCase(); const c=DATA.people.filter(p=>p.name.toLowerCase().includes(l)); return c.length===1?c[0].id:(c.find(p=>p.name.toLowerCase().split(' ').includes(l))||{}).id||null; }
+document.getElementById('pathBtn').onclick=findPath;
+document.getElementById('pathClear').onclick=()=>{document.getElementById('pA').value='';document.getElementById('pB').value='';document.getElementById('pathRes').textContent='';state.path=null;applyHighlight();};
+
+// ---------- list ----------
+const lsel=document.getElementById('lgroup'); GROUPS.forEach(g=>{const o=document.createElement('option');o.textContent=g;lsel.appendChild(o);});
+let sortK='deg', sortDir=-1;
+document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{ const k=th.dataset.k; if(sortK===k) sortDir*=-1; else {sortK=k; sortDir=(k==='deg'||k==='year')?-1:1;} renderList(); });
+['lq','lgroup','ltier','lrel'].forEach(id=>document.getElementById(id).oninput=renderList);
+function renderList(){
+  const v=document.getElementById('lq').value.trim().toLowerCase(), g=lsel.value, t=document.getElementById('ltier').value, r=document.getElementById('lrel').value;
+  let rows=DATA.people.filter(p=>(!g||p.group===g)&&(t===''||String(p.tier)===t)&&(!r||p.reliability===r)&&(!v||(p.name+' '+p.now+' '+p.youth+' '+p.rise+' '+(p.connect||'')).toLowerCase().includes(v)));
+  rows.sort((a,b)=>{ let x=a[sortK],y=b[sortK]; if(x==null) x=sortDir<0?-1:9999; if(y==null) y=sortDir<0?-1:9999; return (x>y?1:x<y?-1:0)*sortDir || a.name.localeCompare(b.name); });
+  document.querySelectorAll('#tbl th').forEach(th=>th.classList.toggle('sorted',th.dataset.k===sortK));
+  document.querySelector('#tbl tbody').innerHTML=rows.map(p=>`<tr><td class="name"><span class="gd" style="--c:${GCOL[p.gi]}"></span><a data-id="${esc(p.id)}">${esc(p.name)}</a></td><td>${p.year??'?'}</td><td>${esc(p.group)}</td><td>${TIERS[p.tier]}</td><td>${p.deg}</td><td>${esc(p.now)}</td><td>${esc(p.youth)}</td><td>${esc(p.rise)}</td><td>${esc(p.reliability)}</td></tr>`).join('');
+  document.getElementById('lstat').textContent=`${rows.length} из ${DATA.people.length}`;
+  document.querySelectorAll('#tbl a[data-id]').forEach(a=>a.onclick=()=>{ document.querySelector('[data-tab=graphView]').click(); const p=P.get(a.dataset.id); revealPerson(p); setTimeout(()=>{openCard(p.id); state.focus=p.id; state.path=null; applyHighlight(); centerOn(p.id);},80); });
+}
+
+// ---------- summary ----------
+function summary(){
+  const ppl=DATA.people; const byT=[0,1,2].map(t=>ppl.filter(p=>p.tier===t).length);
+  const byG=GROUPS.map(g=>ppl.filter(p=>p.group===g).length);
+  const decades={}; for(const p of ppl){ if(p.year){ const d=Math.floor(p.year/10)*10; decades[d]=(decades[d]||0)+1; } }
+  const dk=Object.keys(decades).sort(); const dmax=Math.max(...Object.values(decades));
+  const top=[...ppl].sort((a,b)=>b.deg-a.deg).slice(0,12);
+  const topNodes=[...DATA.nodes].sort((a,b)=>b.members.length-a.members.length).slice(0,12);
+  const isolated=ppl.filter(p=>p.deg===0);
+  const rel=['высокая','средняя','низкая'].map(r=>ppl.filter(p=>p.reliability===r).length);
+  document.getElementById('prose').innerHTML=`
+  <h2>Сводка</h2>
+  <div class="kpi"><div><b>${ppl.length}</b><span>человек на схеме</span></div><div><b>${DATA.nodes.length}</b><span>точек пересечения</span></div><div><b>${DATA.direct.length}</b><span>прямых связей</span></div><div><b>${isolated.length}</b><span>без связей со старой сетью</span></div></div>
+  <p>Выборка: верх российского списка Forbes 2026 года, главы госкомпаний, ключевые чиновники и силовики, затем две сотни кандидатов из досье. Схема разделена на три слоя: <b>ядро</b> (${byT[0]}), <b>первая сотня</b> кандидатов (${byT[1]}) и <b>второй эшелон</b> (${byT[2]}). По умолчанию включены первые два, второй эшелон добавляется галочкой. Состояние на ноябрь 2026 года.</p>
+  <h3>Группы</h3>
+  <div class="bars">${GROUPS.map((g,i)=>`<div><span><span class="sw" style="--c:${GCOL[i]}"></span>${g}</span><i style="width:${byG[i]/Math.max(...byG)*100}%;background:${GCOL[i]}"></i><span>${byG[i]}</span></div>`).join('')}</div>
+  <h3>Год рождения</h3>
+  <div class="bars">${dk.map(d=>`<div><span>${d}-е</span><i style="width:${decades[d]/dmax*100}%"></i><span>${decades[d]}</span></div>`).join('')}</div>
+  <p>Ядро схемы родилось в 1950–1968 годах. Чем дальше от ядра, тем моложе: во втором эшелоне заметно больше людей 1970-х годов рождения, а наследники в основном 1980-х.</p>
+  <h3>Самые связанные люди</h3>
+  <ul>${top.map(p=>`<li><b>${esc(p.name)}</b> — ${p.deg} связей. ${esc(p.now)}</li>`).join('')}</ul>
+  <h3>Крупнейшие точки пересечения</h3>
+  <ul>${topNodes.map(n=>`<li><b>${esc(n.name)}</b> — ${n.members.length} чел. ${esc(n.desc)}</li>`).join('')}</ul>
+
+  <h2>Что их объединяет</h2>
+  <ul>
+  <li><b>Поколение.</b> Большинство ядра родились в 1950–1968 годах. К распаду СССР им было от 23 до 40 лет: достаточно взрослые, чтобы иметь диплом, должность и знакомства, и достаточно молодые, чтобы рискнуть.</li>
+  <li><b>Советский диплом, чаще технический или экономический.</b> Физики, металлурги, инженеры путей сообщения, экономисты. Гуманитариев и юристов заметно меньше, и почти все юристы пришли из одного места, с юрфака ЛГУ.</li>
+  <li><b>Несколько общих коридоров.</b> ЛГУ, МГУ, МГИМО, Московский финансовый институт, МИСиС, МФТИ. Партнёрства часто начинались в общежитии: Фридман, Хан и Кузьмичёв в МИСиС, Прохоров и Хлопонин в финансовом, Абрамов и Фролов в МФТИ, Рыбаков и Колесников там же.</li>
+  <li><b>Капитал сделан на советских активах.</b> Нефть, газ, металл, удобрения, порты. Состояния из первой двадцатки выросли из приватизации 1992–1997 годов, а не из созданного с нуля продукта.</li>
+  <li><b>Близость к государству.</b> У бизнеса она выражалась в доступе к приватизации, лицензиям и подрядам, у чиновников в личном доверии первого лица.</li>
+  </ul>
+
+  <h2>Что их отличает</h2>
+  <p>По способу входа в элиту выборка делится на семь групп. На схеме они показаны цветом.</p>
+  <ul>
+  <li><b><span class="sw" style="--c:${GCOL[3]}"></span>Финансисты и трейдеры 90-х</b> начинали с кооперативов и торговли, затем создавали банки и скупали заводы. Их сила была в скорости и доступе к деньгам.</li>
+  <li><b><span class="sw" style="--c:${GCOL[4]}"></span>Отраслевики</b> выросли внутри своей отрасли: Алекперов от бурильщика до замминистра, Богданов возглавил «Сургутнефтегаз» в 33 года, Мордашов стал финдиректором комбината в 27, Рашников прошёл Магнитку от слесаря до владельца. Они приватизировали то, чем уже управляли.</li>
+  <li><b><span class="sw" style="--c:${GCOL[0]}"></span>Петербургский круг</b> связан не отраслью, а биографией: мэрия Собчака, кооператив «Озеро», секция дзюдо, банк «Россия». Взлёт пришёлся на 2000-е.</li>
+  <li><b><span class="sw" style="--c:${GCOL[1]}"></span>Силовики</b> провели молодость в КГБ и армии. Их ресурс состоит в контроле над ведомствами.</li>
+  <li><b><span class="sw" style="--c:${GCOL[2]}"></span>Технократы</b> поднимались по ведомственной лестнице: Минфин, МИД, Центробанк, налоговая служба, региональные администрации. В расширенной выборке их карьера чаще читается через патрона: команда Мишустина из ФНС, команда Собянина, выходцы из Татарстана, однокурсники Медведева.</li>
+  <li><b><span class="sw" style="--c:${GCOL[5]}"></span>Новая экономика</b> (ритейл, ИТ, фарма, еда) появилась в 2000-х почти без связей со старой сетью. Дуров, Ким, Галицкий, Репик, Касперский, Нуралиев на схеме стоят на отшибе.</li>
+  <li><b><span class="sw" style="--c:${GCOL[6]}"></span>Второе поколение</b> получает должности в госбанках и госкомпаниях к 30–35 годам. С кандидатами эта группа выросла с 4 до ${byG[6]} человек: Ротенберги, Шамаловы, Патрушевы, Фрадковы, Ивановы, наследники Алекперова, Керимова, Гуцериева, Агаларова.</li>
+  </ul>
+
+  <h2>Чем они занимались в 18–25 лет</h2>
+  <ul>
+  <li><b>Учились и работали по распределению.</b> Самый частый сценарий: вуз, затем завод, НИИ или стройка. Михельсон был прорабом на газопроводе, Лисин подручным сталевара, Вексельберг и Абрамов сотрудниками НИИ.</li>
+  <li><b>Служили в армии.</b> Абрамович, Прохоров, Дерипаска, Керимов, Галицкий, Греф, Шувалов, Козак прошли срочную службу до или посреди учёбы.</li>
+  <li><b>Шли в КГБ.</b> Путин, Патрушев и Бортников пришли в органы в 23–24 года, сразу после института. Касперский и Лебедев учились в вузах КГБ.</li>
+  <li><b>Работали за границей от СССР.</b> Переводчики в Анголе, Мозамбике, Ливии (Сечин, Мазепин, Махмудов), дипломаты и внешторговцы (Лавров, Костин, Потанин, Акимов, Саркисов, Торкунов). Это давало язык, валютный опыт и понимание экспорта.</li>
+  <li><b>Делали комсомольскую карьеру.</b> Кириенко, Лихачёв, Собянин, Матвиенко, Гурьев, Ткачёв, Зюганов, Кожин. Комсомол конца 80-х был легальной дверью в первый бизнес.</li>
+  <li><b>Подрабатывали коммерцией.</b> Фридман перепродавал театральные билеты и мыл окна, Прохоров с Хлопониным варили джинсы, Мельниченко в 19 держал обменные пункты, Дерипаска был биржевым брокером. Физтеховцы Рыбаков, Колесников, Кривенко, Бабкин начали торговать студентами.</li>
+  <li><b>Исключения.</b> Дуров в 22 года запустил «ВКонтакте», Репик в 22 основал «Р-Фарм», Кадыров в этом возрасте командовал охраной отца, Усманов с 27 до 33 лет был в заключении по делу, которое позже признали сфабрикованным.</li>
+  </ul>
+  <p>Общий вывод по возрасту: в 18–25 почти никто из них не был богат и не выглядел будущим миллиардером. Они набирали образование, отраслевое знание и круг знакомых, который сработал через 5–15 лет. У второго эшелона картина та же, но данных о молодости заметно меньше: о владельцах среднего масштаба пишут мало.</p>
+
+  <h2>Где и после чего они выстрелили</h2>
+  <ul>
+  <li><b>1987–1991, кооперативы и внешняя торговля.</b> Закон о кооперации дал первые деньги. Тимченко получил экспорт нефтепродуктов из Киришей, Фридман основал «Альфу», Потанин «Интеррос», Вексельберг «Ренову».</li>
+  <li><b>1992–1994, ваучерная приватизация.</b> Скупка акций у трудовых коллективов: Мордашов, Рыболовлев, Дерипаска, Лисин, Рашников.</li>
+  <li><b>1995, залоговые аукционы.</b> Самое крупное одномоментное событие. Через него прошли Норникель, Сибнефть, Лукойл, Сургутнефтегаз, ЮКОС.</li>
+  <li><b>1991–1996, мэрия Петербурга.</b> Точка сборки будущей федеральной команды. После 1999 года её участники заняли Газпром, Роснефть, Сбербанк, Минфин.</li>
+  <li><b>2000-е, госкорпорации и подряды.</b> Ростех, Росатом, РЖД, Транснефть, строительные подряды Газпрома. Взлёт Ротенбергов, Ковальчука, Чемезова.</li>
+  <li><b>2000-е, потребительский рынок и интернет.</b> «Магнит», Wildberries, Яндекс, «ВКонтакте», «Технониколь», Fix Price. Единственная группа, где взлёт следует за собственным продуктом.</li>
+  <li><b>2010-е, импортозамещение.</b> Агрохолдинги и фарма: Мошкович, Линник, Бабаев, Дюрр, Пуния, Харитонин выросли на продовольственном эмбарго и госзакупках лекарств.</li>
+  <li><b>После 2022 года.</b> Перераспределение ушедших иностранных и изъятых активов, рост состояний металлургов и производителей удобрений. В 2026 году Forbes насчитал рекордных 155 российских миллиардеров.</li>
+  </ul>
+  <p>Повторяющаяся формула взлёта: человек оказывается внутри актива или рядом с лицом, принимающим решения, ровно в тот момент, когда меняются правила собственности.</p>
+
+  <h2>Что видно на схеме</h2>
+  <ul>
+  <li>Плотнее всего связан петербургский кластер: ЛГУ, мэрия, «Озеро», КГБ, банк «Россия». Через него проходит больше всего путей.</li>
+  <li>Московский деловой кластер держится на сделках: залоговые аукционы, Норникель, Русал, ТНК. Одни и те же шесть–семь человек встречаются в разных комбинациях как партнёры и как противники.</li>
+  <li>Два кластера соединяют немногие узлы: правительство, Газпром, покупка ТНК-BP Роснефтью, банк «Россия». Инструмент «Как связаны» показывает, что между почти любыми двумя людьми ядра не больше трёх шагов.</li>
+  <li>С кандидатами появились отраслевые кусты, слабо связанные с ядром: девелоперы Москвы, агрохолдинги, фарма, золото, частные банки. Их владельцы соединены с властью через одну нитку: сделку, бывшего работодателя или общий вуз.</li>
+  <li>Региональные узлы (Татарстан, Кузбасс, Дальний Восток, Чечня, Новосибирск, Краснодар) держатся на губернаторе, а не на Кремле.</li>
+  <li>Чем моложе бизнес, тем меньше у его основателя связей со старой сетью. ${isolated.length} человек на схеме не имеют ни одного задокументированного пересечения.</li>
+  </ul>
+
+  <h2>Как пользоваться</h2>
+  <ul>
+  <li><b>Слои.</b> Ядро и первая сотня включены сразу, второй эшелон добавляется галочкой: с ним схема плотнее, но медленнее.</li>
+  <li><b>Группы и узлы.</b> Клик по чипу скрывает группу, двойной клик оставляет только её. Так же выключаются категории точек пересечения, например все вузы.</li>
+  <li><b>Карточка.</b> Клик по кругу или ромбу. Внутри карточки ссылки на связанных людей и узлы; если человек скрыт фильтром, фильтр расширится.</li>
+  <li><b>Окружение.</b> Двойной клик по узлу или кнопка в карточке приглушает всё, кроме соседей.</li>
+  <li><b>Как связаны.</b> Два имени в блоке слева, и схема подсветит кратчайшую цепочку с пояснением каждого шага. Путь ищется по всем слоям.</li>
+  <li><b>Список.</b> Вкладка с таблицей: сортировка по числу связей и году, поиск по тексту карточек, переход к человеку на схеме.</li>
+  </ul>
+
+  <h2>Ограничения</h2>
+  <p>Связь на схеме означает задокументированное пересечение: общий вуз, место работы, сделка, совместное владение или родство. Она не означает дружбу, сговор или зависимость. Биографии сжаты до нескольких строк и собраны по открытым публикациям, отдельные даты могут расходиться с другими источниками на год. Часть фигур уже не живёт в России или потеряла активы, это отмечено в карточках.</p>
+  <p>Надёжность данных по оценке досье: высокая у ${rel[0]} человек, средняя у ${rel[1]}, низкая у ${rel[2]}. Люди с низкой надёжностью нарисованы пунктирным контуром, их должности и даты нужно проверять перед использованием. У ${ppl.filter(p=>p.year==null).length} человек год рождения не установлен.</p>
+  <p>Источники оценок состояний и статистики: рейтинг Forbes 2026 года, обзор Forbes Education об образовании миллиардеров, рейтинг АПЭК «100 ведущих политиков», публикации о перестановках в правительстве в октябре 2026 года.</p>`;
+}
+
+summary(); renderList(); buildGraph(); setTimeout(fit,900);
+</script>
+</body>
+</html>
