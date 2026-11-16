@@ -1,0 +1,15 @@
+{
+  "name": "im22andidkwhattodo",
+  "private": true,
+  "description": "Схема связей российской элиты и анкета «Ваш путь»",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 \"tests/*.test.cjs\"",
+    "test:data": "node --test tests/data.test.cjs",
+    "test:anketa": "node --test tests/anketa.test.cjs",
+    "test:ui": "node --test tests/ui.test.cjs",
+    "test:deploy": "node --test tests/deploy.test.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

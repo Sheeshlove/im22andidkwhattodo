@@ -14,6 +14,10 @@
 
 Источники данных: `data/dosye-elita.md`, `data/dosye-elita-tretya-sotnya.md` и `data/dosye-elita-chetvyortaya-sotnya.md`. Изменения анкеты относительно спецификации: `data/anketa-izmeneniya.md`. Шрифты системы дизайна в `fonts/`. Сборка описана в `tools/README.md`.
 
+## Сборка и тесты
+
+Страница собирается командой `tools/rebuild.sh`, подробности в `tools/README.md`. Тесты запускаются командой `npm test`, их состав описан в `tests/README.md`.
+
 ## Развёртывание
 
 Как открыть сайт локально, выложить на свой сервер с nginx или на GitHub Pages: `DEPLOY.md`. Готовый конфиг nginx лежит в `deploy/nginx.conf`.
