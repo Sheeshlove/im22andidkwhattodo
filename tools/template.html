@@ -8,7 +8,7 @@
 <title>Мне 22 года и я не знаю, что делать дальше</title>
 <meta name="color-scheme" content="light dark">
 <script>(function(){try{var s=localStorage.getItem("theme");document.documentElement.dataset.theme=s||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme="light"}})();</script>
-<meta name="description" content="Интерактивная схема связей: 298 человек и 87 точек пересечения. Три слоя, фильтры, карточки, поиск пути между людьми.">
+<meta name="description" content="Интерактивная схема связей российской элиты: 498 человек, 106 точек пересечения, пять слоёв, фильтры, карточки, поиск пути между людьми.">
 <style>
 @layer ui-sdk;
 @font-face{font-family:"Acari Sans";src:url(fonts/AcariSans-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
@@ -29,7 +29,7 @@
   --text-lead:400 18px/1.5 var(--font-text);--text-body:400 16px/1.5 var(--font-text);--text-body-strong:700 16px/1.5 var(--font-text);--text-small:400 14px/1.5 var(--font-text);--text-small-strong:700 14px/1.5 var(--font-text);--text-caption:700 12px/1.4 var(--font-text);--text-stat:700 28px/1.2 var(--font-text);--text-logotype:400 28px/1 var(--font-logo);
   --topbar-height:56px;--sidebar-width:300px;--content-max:720px;--page-max:1200px;--touch-target:44px;
   /* group colours: lightness-separated, drawn from the palette */
-  --g0:#35546c;--g1:#b3261e;--g2:#6f7b88;--g3:#c9a400;--g4:#1d6b4f;--g5:#6447b3;--g6:#5c7da6;
+  --g0:#35546c;--g1:#b3261e;--g2:#6f7b88;--g3:#c9a400;--g4:#1d6b4f;--g5:#6447b3;--g6:#5c7da6;--g7:#a3346b;--g7:#a3346b;
   --node:#8795a5;--edge:#dde3ea;--direct:#58636f;
   /* aliases used by the page */
   --bg:var(--surface);--panel:var(--surface-raised);--ink-c:var(--text);--muted:var(--text-muted);--line:var(--border);--accent:var(--brand-text);--accent-ink:var(--on-brand);--chip:var(--surface-subtle);--shadow:var(--shadow-md);
@@ -41,7 +41,7 @@
   --danger:#ff9a94;--on-danger:#0f151b;--success:#8fdca0;--scrim:rgba(0,0,0,.6);
   --money-text:#8fe0b8;--media-text:#c3b2f5;--trips-text:#ffdd00;
   --shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow-md:0 4px 12px rgba(0,0,0,.5);--shadow-lg:0 12px 32px rgba(0,0,0,.6);
-  --g0:#9fbad6;--g1:#ff9a94;--g2:#a3b0bd;--g3:#ffdd00;--g4:#8fe0b8;--g5:#c3b2f5;--g6:#5c7da6;
+  --g0:#9fbad6;--g1:#ff9a94;--g2:#a3b0bd;--g3:#ffdd00;--g4:#8fe0b8;--g5:#c3b2f5;--g6:#5c7da6;--g7:#f2a7cb;
   --node:#6f7b88;--edge:#2c3844;--direct:#a3b0bd;
   color-scheme:dark;
 }
@@ -231,6 +231,7 @@ fieldset.q legend,.qlabel{display:block;font:var(--text-body-strong);margin:0 0 
 .arch{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-3)}
 .archcard{background:var(--surface-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4)}
 .archcard .pct{font:var(--text-stat);color:var(--brand-text)}
+.archcard .pct-l{margin:0;font:var(--text-caption);color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
 .archcard h4{font:var(--text-subheading);margin:var(--space-1) 0}
 .archcard p{margin:0 0 var(--space-3);font:var(--text-small);color:var(--text-muted)}
 .archall{font:var(--text-small);columns:2}
@@ -325,6 +326,7 @@ blockquote{margin:0 0 var(--space-3);padding:var(--space-3) var(--space-4);backg
         <label><input type="checkbox" class="tier" value="1" checked> Первая сотня</label>
         <label><input type="checkbox" class="tier" value="2"> Второй эшелон</label>
         <label><input type="checkbox" class="tier" value="3"> Третья сотня</label>
+        <label><input type="checkbox" class="tier" value="4"> Четвёртая сотня</label>
       </div>
     </div>
     <div>
@@ -345,7 +347,7 @@ blockquote{margin:0 0 var(--space-3);padding:var(--space-3) var(--space-4);backg
     </div>
     <div>
       <h3>Год рождения</h3>
-      <div class="row"><input type="number" id="yFrom" value="1939" style="width:80px"> — <input type="number" id="yTo" value="1995" style="width:80px"> <label><input type="checkbox" id="yUnknown" checked> без года</label></div>
+      <div class="row"><input type="number" id="yFrom" value="1930" style="width:80px"> — <input type="number" id="yTo" value="2000" style="width:80px"> <label><input type="checkbox" id="yUnknown" checked> без года</label></div>
     </div>
     <div>
       <h3>Как связаны</h3>
@@ -378,7 +380,7 @@ blockquote{margin:0 0 var(--space-3);padding:var(--space-3) var(--space-4);backg
   <div class="listtools">
     <input id="lq" placeholder="Поиск по имени и тексту карточки" style="min-width:260px">
     <select id="lgroup"><option value="">Все группы</option></select>
-    <select id="ltier"><option value="">Все слои</option><option value="0">Ядро</option><option value="1">Первая сотня</option><option value="2">Второй эшелон</option><option value="3">Третья сотня</option></select>
+    <select id="ltier"><option value="">Все слои</option><option value="0">Ядро</option><option value="1">Первая сотня</option><option value="2">Второй эшелон</option><option value="3">Третья сотня</option><option value="4">Четвёртая сотня</option></select>
     <select id="lrel"><option value="">Любая надёжность</option><option>высокая</option><option>средняя</option><option>низкая</option></select>
     <span class="stat" id="lstat"></span>
   </div>
@@ -392,7 +394,7 @@ blockquote{margin:0 0 var(--space-3);padding:var(--space-3) var(--space-4);backg
 <section class="view" id="summaryView">
   <div class="hero"><div class="in">
     <h2>Мне 22 года и я не знаю, что делать дальше</h2>
-    <p>А чем в 22 занимались те, кто сегодня управляет страной и её деньгами? Схема связей 398 человек: где учились, где работали, с кем вели дела.</p>
+    <p>А чем в 22 занимались те, кто сегодня управляет страной и её деньгами? Схема связей 498 человек: где учились, где работали, с кем вели дела.</p>
     <div class="hero-cta"><button class="btn on-panel" data-goto="quizView">Сравнить свой путь</button></div>
     <svg viewBox="0 0 600 300" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><path class="road" d="M 40 260 C 120 120, 180 290, 260 180 S 400 40, 460 120 S 560 240, 620 90"/></svg>
   </div></div>
@@ -404,10 +406,10 @@ blockquote{margin:0 0 var(--space-3);padding:var(--space-3) var(--space-4);backg
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
 const DATA = JSON.parse(document.getElementById('data').textContent);
-const GROUPS = ['Петербургский круг','Силовики','Технократы и чиновники','Финансисты и трейдеры 90-х','Отраслевики','Новая экономика','Второе поколение'];
+const GROUPS = ['Петербургский круг','Силовики','Технократы и чиновники','Финансисты и трейдеры 90-х','Отраслевики','Новая экономика','Второе поколение','Спорт, культура и медиа'];
 const GCOL = GROUPS.map((_,i)=>`var(--g${i})`);
 const CATS = [...new Set(DATA.nodes.map(n=>n.cat))];
-const TIERS = ['ядро','первая сотня','второй эшелон','третья сотня'];
+const TIERS = ['ядро','первая сотня','второй эшелон','третья сотня','четвёртая сотня'];
 const P = new Map(DATA.people.map(p=>[p.id,p]));
 const NODE = new Map(DATA.nodes.map(n=>[n.name,n]));
 // adjacency
@@ -432,7 +434,7 @@ document.querySelectorAll('nav.tabs [role=tab]').forEach(b=>b.onclick=()=>{
 });
 
 // ---------- filters ----------
-const state={tiers:new Set(['0','1']),groups:new Set(GROUPS),cats:new Set(CATS),rel:new Set(['высокая','средняя','низкая']),yFrom:1939,yTo:1995,yUnknown:true,focus:null,path:null,labels:'all'};
+const state={tiers:new Set(['0','1']),groups:new Set(GROUPS),cats:new Set(CATS),rel:new Set(['высокая','средняя','низкая']),yFrom:1930,yTo:2000,yUnknown:true,focus:null,path:null,labels:'all'};
 const gc=document.getElementById('groupChips');
 GROUPS.forEach((g,i)=>{ const c=document.createElement('span'); c.className='chip'; c.style.setProperty('--c',GCOL[i]); c.innerHTML=`<span class="dot"></span>${g}`; c.onclick=()=>{ if(state.groups.has(g)) state.groups.delete(g); else state.groups.add(g); c.classList.toggle('off',!state.groups.has(g)); refresh(); }; c.ondblclick=()=>{ state.groups=new Set([g]); [...gc.children].forEach((x,j)=>x.classList.toggle('off',j!==i)); refresh(); }; gc.appendChild(c); });
 const cc=document.getElementById('catChips');
@@ -638,7 +640,7 @@ function renderList(){
 
 // ---------- summary ----------
 function summary(){
-  const ppl=DATA.people; const byT=[0,1,2,3].map(t=>ppl.filter(p=>p.tier===t).length);
+  const ppl=DATA.people; const byT=[0,1,2,3,4].map(t=>ppl.filter(p=>p.tier===t).length);
   const byG=GROUPS.map(g=>ppl.filter(p=>p.group===g).length);
   const decades={}; for(const p of ppl){ if(p.year){ const d=Math.floor(p.year/10)*10; decades[d]=(decades[d]||0)+1; } }
   const dk=Object.keys(decades).sort(); const dmax=Math.max(...Object.values(decades));
@@ -650,7 +652,7 @@ function summary(){
   document.getElementById('prose').innerHTML=`
   <h2 style="margin-top:0">Сводка</h2>
   <div class="kpi"><div><b>${ppl.length}</b><span>человек на схеме</span></div><div><b>${withPhoto.length}</b><span>с фотографией</span></div><div><b>${DATA.nodes.length}</b><span>точек пересечения</span></div><div><b>${DATA.direct.length}</b><span>прямых связей</span></div><div><b>${isolated.length}</b><span>без связей со старой сетью</span></div></div>
-  <p>Выборка: верх российского списка Forbes 2026 года, главы госкомпаний, ключевые чиновники и силовики, затем две сотни кандидатов из досье. Схема разделена на четыре слоя: <b>ядро</b> (${byT[0]}), <b>первая сотня</b> кандидатов (${byT[1]}), <b>второй эшелон</b> (${byT[2]}) и <b>третья сотня</b> (${byT[3]}). По умолчанию включены первые два, остальные добавляются галочками. Состояние на ноябрь 2026 года.</p>
+  <p>Выборка: верх российского списка Forbes 2026 года, главы госкомпаний, ключевые чиновники и силовики, затем четыре сотни кандидатов из досье. Схема разделена на пять слоёв: <b>ядро</b> (${byT[0]}), <b>первая сотня</b> кандидатов (${byT[1]}), <b>второй эшелон</b> (${byT[2]}), <b>третья сотня</b> (${byT[3]}) и <b>четвёртая сотня</b> (${byT[4]}). Четвёртую отбирали не по состоянию, а по тому, насколько хорошо известна жизнь человека в 18–25 лет: в ней много спортсменов, музыкантов, режиссёров и дипломатов. По умолчанию включены первые два, остальные добавляются галочками. Состояние на ноябрь 2026 года.</p>
   <h3>Группы</h3>
   <div class="bars">${GROUPS.map((g,i)=>`<div><span><span class="sw" style="--c:${GCOL[i]}"></span>${g}</span><i style="width:${byG[i]/Math.max(...byG)*100}%;background:${GCOL[i]}"></i><span>${byG[i]}</span></div>`).join('')}</div>
   <h3>Год рождения</h3>
@@ -671,7 +673,7 @@ function summary(){
   </ul>
 
   <h2>Что их отличает</h2>
-  <p>По способу входа в элиту выборка делится на семь групп. На схеме они показаны цветом.</p>
+  <p>По способу входа в элиту выборка делится на восемь групп. На схеме они показаны цветом.</p>
   <ul>
   <li><b><span class="sw" style="--c:${GCOL[3]}"></span>Финансисты и трейдеры 90-х</b> начинали с кооперативов и торговли, затем создавали банки и скупали заводы. Их сила была в скорости и доступе к деньгам.</li>
   <li><b><span class="sw" style="--c:${GCOL[4]}"></span>Отраслевики</b> выросли внутри своей отрасли: Алекперов от бурильщика до замминистра, Богданов возглавил «Сургутнефтегаз» в 33 года, Мордашов стал финдиректором комбината в 27, Рашников прошёл Магнитку от слесаря до владельца. Они приватизировали то, чем уже управляли.</li>
@@ -680,6 +682,7 @@ function summary(){
   <li><b><span class="sw" style="--c:${GCOL[2]}"></span>Технократы</b> поднимались по ведомственной лестнице: Минфин, МИД, Центробанк, налоговая служба, региональные администрации. В расширенной выборке их карьера чаще читается через патрона: команда Мишустина из ФНС, команда Собянина, выходцы из Татарстана, однокурсники Медведева.</li>
   <li><b><span class="sw" style="--c:${GCOL[5]}"></span>Новая экономика</b> (ритейл, ИТ, фарма, еда) появилась в 2000-х почти без связей со старой сетью. Дуров, Ким, Галицкий, Репик, Касперский, Нуралиев на схеме стоят на отшибе.</li>
   <li><b><span class="sw" style="--c:${GCOL[6]}"></span>Второе поколение</b> получает должности в госбанках и госкомпаниях к 30–35 годам. С кандидатами эта группа выросла с 4 до ${byG[6]} человек: Ротенберги, Шамаловы, Патрушевы, Фрадковы, Ивановы, наследники Алекперова, Керимова, Гуцериева, Агаларова.</li>
+  <li><b><span class="sw" style="--c:${GCOL[7]}"></span>Спорт, культура и медиа</b> пришли через ремесло: олимпийские чемпионы, музыканты, режиссёры, телеведущие. К 25 годам у многих уже был мировой результат, а позже репутация открыла дорогу в управление федерацией, театром или в Думу.</li>
   </ul>
 
   <h2>Чем они занимались в 18–25 лет</h2>
@@ -721,7 +724,7 @@ function summary(){
 
   <h2>Как пользоваться</h2>
   <ul>
-  <li><b>Слои.</b> Ядро и первая сотня включены сразу, второй эшелон и третья сотня добавляются галочками: с ними схема плотнее, но медленнее.</li>
+  <li><b>Слои.</b> Ядро и первая сотня включены сразу, второй эшелон, третья и четвёртая сотни добавляются галочками: с ними схема плотнее, но медленнее.</li>
   <li><b>Группы и узлы.</b> Клик по чипу скрывает группу, двойной клик оставляет только её. Так же выключаются категории точек пересечения, например все вузы.</li>
   <li><b>Карточка.</b> Клик по кругу или ромбу. Внутри карточки ссылки на связанных людей и узлы; если человек скрыт фильтром, фильтр расширится.</li>
   <li><b>Окружение.</b> Двойной клик по узлу или кнопка в карточке приглушает всё, кроме соседей.</li>

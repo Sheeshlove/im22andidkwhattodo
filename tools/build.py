@@ -3,7 +3,7 @@ sys.path.insert(0,'.')
 from mapping import N, NEW_NODES
 raw=json.load(open('raw.json'))
 people={}
-for tier,key in ((0,'core'),(1,'cand1'),(2,'cand2'),(3,'cand3')):
+for tier,key in ((0,'core'),(1,'cand1'),(2,'cand2'),(3,'cand3'),(4,'cand4')):
     for p in raw[key]:
         p['id']=p['name']; people[p['name']]=p
 nodes={n['name']:n for n in raw['nodes']}
@@ -20,7 +20,7 @@ for p in raw['core']:
         if nm not in nodes: errors.append(('node',p['name'],nm)); continue
         if (nm,p['name']) not in member_set:
             nodes[nm]['members'].append([p['name'],role]); member_set.add((nm,p['name']))
-for p in raw['cand1']+raw['cand2']+raw['cand3']:
+for p in raw['cand1']+raw['cand2']+raw['cand3']+raw['cand4']:
     ns,ds=N[p['num']]
     for nm,role in ns:
         if nm not in nodes: errors.append(('node',p['name'],nm)); continue
@@ -28,7 +28,7 @@ for p in raw['cand1']+raw['cand2']+raw['cand3']:
             nodes[nm]['members'].append([p['name'],role]); member_set.add((nm,p['name']))
 direct=[list(d) for d in raw['direct']]
 seen={frozenset(d[:2]) for d in direct}
-for p in raw['cand1']+raw['cand2']+raw['cand3']:
+for p in raw['cand1']+raw['cand2']+raw['cand3']+raw['cand4']:
     for other,label in N[p['num']][1]:
         if other not in people: errors.append(('person',p['name'],other)); continue
         k=frozenset((p['name'],other))
