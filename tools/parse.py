@@ -30,6 +30,11 @@ def parse_people(block, tier):
 core = parse_people(section(r'^# Часть 1\.', r'^# Часть 2\.'), 0)
 cand1 = parse_people(section(r'^# Часть 3\.', r'^## Новые узлы, которые'), 1)
 cand2 = parse_people(section(r'^# Часть 4\.', r'^## Новые узлы второго'), 2)
+cand3=[]
+if len(sys.argv)>2:
+    lines3=open(sys.argv[2],encoding='utf-8').read().split('\n')
+    e=next(i for i,l in enumerate(lines3) if l.startswith('## Новые узлы'))
+    _L=lines; lines=lines3[:e]; cand3=parse_people(lines,3); lines=_L
 
 # nodes
 nodes=[]; cat=None; cur=None
@@ -48,8 +53,8 @@ for l in section(r'^## Прямые связи', r'^# Часть 3\.'):
     m=re.match(r'^- (.+?) и (.+?): (.+)$', l)
     if m: direct.append([m.group(1).strip(), m.group(2).strip(), m.group(3).strip()])
 
-json.dump({'core':core,'cand1':cand1,'cand2':cand2,'nodes':nodes,'direct':direct}, open('raw.json','w'), ensure_ascii=False, indent=1)
-print(len(core),len(cand1),len(cand2),len(nodes),len(direct))
+json.dump({'core':core,'cand1':cand1,'cand2':cand2,'cand3':cand3,'nodes':nodes,'direct':direct}, open('raw.json','w'), ensure_ascii=False, indent=1)
+print(len(core),len(cand1),len(cand2),len(cand3),len(nodes),len(direct))
 names=set(p['name'] for p in core)
 for n in nodes:
     for mem,_ in n['members']:
