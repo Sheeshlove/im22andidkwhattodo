@@ -12,3 +12,7 @@
 - Вкладка «Сводка»: статистика и выводы.
 
 Источники данных: `data/dosye-elita.md` и `data/dosye-elita-tretya-sotnya.md`. Шрифты системы дизайна в `fonts/`. Сборка описана в `tools/README.md`.
+
+## Развёртывание
+
+Как открыть сайт локально, выложить на свой сервер с nginx или на GitHub Pages: `DEPLOY.md`. Готовый конфиг nginx лежит в `deploy/nginx.conf`.
