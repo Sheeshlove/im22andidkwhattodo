@@ -170,6 +170,101 @@ td .av{width:28px;height:28px;border-radius:50%;object-fit:cover;vertical-align:
 .credits{font:var(--text-small);font-size:12px;color:var(--text-muted);columns:2;column-gap:20px}
 .credits li{break-inside:avoid;margin-bottom:3px}
 details summary{cursor:pointer;font:var(--text-small-strong);color:var(--brand-text)}
+
+/* quiz */
+#quizView{overflow:auto;flex-direction:column}
+#quizRoot{flex:none;width:100%}
+.quiz{max-width:var(--content-max);margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-7);width:100%}
+.quiz.result{max-width:880px}
+.eyebrow{font:var(--text-caption);text-transform:uppercase;letter-spacing:.04em;color:var(--brand-text);margin:0 0 var(--space-2)}
+.qtitle{font:var(--text-title);margin:0 0 var(--space-3)}
+.lead{font:var(--text-lead);margin:0 0 var(--space-4)}
+.muted{color:var(--text-muted);font:var(--text-small)}
+.mono{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.note{background:var(--surface-subtle);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4);margin:0 0 var(--space-4)}
+.note p{margin:0 0 var(--space-2);font:var(--text-small)}.note p:last-child{margin:0}
+.quiz-actions{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-4)}
+.progress{height:6px;background:var(--surface-subtle);border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden;margin-bottom:var(--space-5)}
+.progress i{display:block;height:100%;background:var(--brand-text);transition:width .2s ease}
+fieldset.q{border:0;margin:0 0 var(--space-5);padding:0;min-width:0}
+fieldset.q legend,.qlabel{display:block;font:var(--text-body-strong);margin:0 0 var(--space-2);padding:0}
+.qn{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin-right:var(--space-2);border-radius:var(--radius-pill);background:var(--surface-subtle);border:1px solid var(--border);font:var(--text-caption);color:var(--text-muted);vertical-align:2px}
+.opts{display:flex;flex-direction:column;gap:var(--space-2)}
+.opt{display:flex;align-items:center;gap:var(--space-3);min-height:44px;padding:var(--space-2) var(--space-3);border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface-raised);cursor:pointer;font:var(--text-body);transition:border-color .12s ease,background-color .12s ease}
+.opt:hover{border-color:var(--border-strong)}
+.opt.sel{background:var(--brand-tint);border-color:var(--brand-text)}
+.opt input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:0;border:1px solid var(--border-strong);border-radius:50%;background:var(--surface-raised);display:grid;place-content:center;cursor:pointer}
+.opt input:checked{border-color:var(--brand-text)}
+.opt input:checked::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--brand-text)}
+.q textarea{width:100%;padding:var(--space-2) var(--space-3);font:var(--text-body);color:var(--text);background:var(--surface-raised);border:1px solid var(--border-strong);border-radius:var(--radius-md);resize:vertical;min-height:96px}
+.err{color:var(--danger);font:var(--text-small-strong);min-height:1.5em;margin:0}
+.quiz-nav{position:sticky;bottom:0;display:flex;justify-content:space-between;gap:var(--space-2);padding:var(--space-3) 0 calc(var(--space-3) + env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--border);margin-top:var(--space-2)}
+.btn.sm{height:32px;padding:0 var(--space-3)}
+.btn.on-panel{background:var(--white);color:var(--ink)}
+.btn.on-panel:hover{background:#e8eff7}
+.hero-cta{margin-top:var(--space-5)}
+/* result */
+.rs{margin:var(--space-7) 0 0}
+.rs h3{font:var(--text-heading);margin:0 0 var(--space-3)}
+.rs h4.sub{font:var(--text-subheading);margin:var(--space-5) 0 var(--space-3)}
+.profile{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-5);align-items:center}
+.radar{width:100%;max-width:440px;height:auto;display:block;margin:0 auto}
+.radar .rg{fill:none;stroke:var(--border);stroke-width:1}
+.radar .rref{fill:none;stroke:var(--text-muted);stroke-width:2;stroke-dasharray:7 6;stroke-linecap:round}
+.radar .ruser{fill:var(--brand-tint);fill-opacity:.85;stroke:var(--brand-text);stroke-width:2.5}
+.radar .rdot{fill:var(--brand-text)}
+.radar .rl{font:var(--text-caption);fill:var(--text)}
+.legend-r{display:flex;align-items:center;justify-content:center;gap:var(--space-2);font:var(--text-small);color:var(--text-muted)}
+.lg-u,.lg-r{display:inline-block;width:18px;height:0;border-top:3px solid var(--brand-text)}
+.lg-r{border-top:2px dashed var(--text-muted);margin-left:var(--space-3)}
+.axes{display:flex;flex-direction:column;gap:var(--space-2)}
+.axrow{display:grid;grid-template-columns:140px 1fr 24px 72px;gap:var(--space-2);align-items:center;font:var(--text-small)}
+.axbar{height:10px;background:var(--surface-subtle);border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden}
+.axbar i{display:block;height:100%;background:var(--brand-text)}
+.axv{font:var(--text-small-strong);text-align:right}
+.axl{font:var(--text-caption);text-align:center;border-radius:var(--radius-pill);padding:2px 6px;color:var(--ink)}
+.lvl-low{background:var(--risk-high)}.lvl-mid{background:var(--sun-400)}.lvl-high{background:var(--risk-low)}
+.callout{background:var(--brand-tint);color:var(--text);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);font:var(--text-body)}
+.arch{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-3)}
+.archcard{background:var(--surface-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4)}
+.archcard .pct{font:var(--text-stat);color:var(--brand-text)}
+.archcard h4{font:var(--text-subheading);margin:var(--space-1) 0}
+.archcard p{margin:0 0 var(--space-3);font:var(--text-small);color:var(--text-muted)}
+.archall{font:var(--text-small);columns:2}
+details{margin-top:var(--space-3)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.pchip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px 0 2px;border-radius:var(--radius-pill);background:var(--surface-subtle);border:1px solid var(--border);color:var(--text);font:var(--text-small);cursor:pointer;transition:background-color .12s ease}
+.pchip:hover{background:var(--border)}
+.pchip img{width:24px;height:24px;border-radius:50%;object-fit:cover}
+.pchip .pdot{width:12px;height:12px;border-radius:50%;background:var(--c);margin-left:6px}
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-3)}
+.pcard{background:var(--surface-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)}
+.pc-head{display:flex;gap:var(--space-3);align-items:center}
+.pc-ph{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--c);flex:none;background:var(--surface-subtle)}
+.pc-none{display:inline-block;background:var(--c)}
+.pcard h4{font:var(--text-body-strong);margin:0}
+.pcard p{margin:0}
+.pcard dl{margin:0;flex:1}
+.pcard dt{font:var(--text-caption);text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);margin-top:var(--space-2)}
+.pcard dd{margin:2px 0 0;font:var(--text-small)}
+.pcard .btn{align-self:flex-start}
+.adv{background:var(--surface-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4);margin:0 0 var(--space-3)}
+.adv-head{display:flex;gap:var(--space-2);align-items:center;margin-bottom:var(--space-2)}
+.axtag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--radius-pill);background:var(--brand-tint);color:var(--brand-text);font:var(--text-caption)}
+.adv-t{font:var(--text-body-strong);margin:0 0 var(--space-2)}
+.adv p{margin:0 0 var(--space-2)}
+.ex{margin:0 0 var(--space-3)}
+.ex p{font:var(--text-small);color:var(--text-muted);margin:0 0 var(--space-1)}
+.act{background:var(--surface-subtle);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);font:var(--text-small)}
+.honest{padding-left:20px}.honest li{margin-bottom:var(--space-2)}
+blockquote{margin:0 0 var(--space-3);padding:var(--space-3) var(--space-4);background:var(--surface-subtle);border-radius:var(--radius-md);font:var(--text-lead)}
+.linkslist{padding-left:20px;font:var(--text-small)}.linkslist li{margin-bottom:var(--space-2)}
+@media (max-width:700px){
+  .profile{grid-template-columns:1fr}
+  .axrow{grid-template-columns:110px 1fr 22px 64px}
+  .archall{columns:1}
+  .qtitle{font:var(--text-title)}
+}
 @media (max-width:599.98px){
   :root{--text-display:700 36px/1.15 var(--font-text);--text-title:700 26px/1.25 var(--font-text);--text-heading:700 22px/1.3 var(--font-text);--text-stat:700 24px/1.2 var(--font-text)}
   .hero .in{padding:var(--space-6) var(--space-4)}
@@ -188,7 +283,10 @@ details summary{cursor:pointer;font:var(--text-small-strong);color:var(--brand-t
   #graphView{flex-direction:column}
   #graphView .canvas{min-height:55vh}
   .card{top:auto;bottom:0;right:0;left:0;width:100%;max-width:100%;max-height:60%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;border-bottom:0}
-  nav.tabs{margin-left:0;width:100%}
+  nav.tabs{margin-left:0;width:100%;overflow-x:auto;scrollbar-width:none;order:4}
+  nav.tabs::-webkit-scrollbar{display:none}
+  nav.tabs button[role=tab]{padding:0 var(--space-2)}
+  nav.tabs button.icon{flex:none}
   header h1{white-space:normal}
   .hint{display:none}
   .bars div{grid-template-columns:120px 1fr 36px}
@@ -203,6 +301,7 @@ details summary{cursor:pointer;font:var(--text-small-strong);color:var(--brand-t
   <a class="logo" href="#"><span class="logo__mark">ШИБЕЙС</span><span class="logo__product">База знаний</span></a>
   <div class="ttl"><h1>Мне 22 года и я не знаю, что делать дальше</h1><div class="sub" id="subtitle"></div></div>
   <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="false" data-tab="quizView">Ваш путь</button>
     <button role="tab" aria-selected="true" data-tab="graphView">Схема</button>
     <button role="tab" aria-selected="false" data-tab="listView">Список</button>
     <button role="tab" aria-selected="false" data-tab="summaryView">Сводка</button>
@@ -285,10 +384,13 @@ details summary{cursor:pointer;font:var(--text-small-strong);color:var(--brand-t
   </tr></thead><tbody></tbody></table>
 </section>
 
+<section class="view" id="quizView"><div id="quizRoot"></div></section>
+
 <section class="view" id="summaryView">
   <div class="hero"><div class="in">
     <h2>Мне 22 года и я не знаю, что делать дальше</h2>
     <p>А чем в 22 занимались те, кто сегодня управляет страной и её деньгами? Схема связей 398 человек: где учились, где работали, с кем вели дела.</p>
+    <div class="hero-cta"><button class="btn on-panel" data-goto="quizView">Сравнить свой путь</button></div>
     <svg viewBox="0 0 600 300" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><path class="road" d="M 40 260 C 120 120, 180 290, 260 180 S 400 40, 460 120 S 560 240, 620 90"/></svg>
   </div></div>
   <div class="prose" id="prose"></div>
@@ -621,6 +723,7 @@ function summary(){
   <li><b>Карточка.</b> Клик по кругу или ромбу. Внутри карточки ссылки на связанных людей и узлы; если человек скрыт фильтром, фильтр расширится.</li>
   <li><b>Окружение.</b> Двойной клик по узлу или кнопка в карточке приглушает всё, кроме соседей.</li>
   <li><b>Как связаны.</b> Два имени в блоке слева, и схема подсветит кратчайшую цепочку с пояснением каждого шага. Путь ищется по всем слоям.</li>
+  <li><b>Ваш путь.</b> Анкета из 31 вопроса: восемь осей, два ближайших архетипа, три человека с похожим стартом и советы с действием на 90 дней. Ответы считаются в браузере и никуда не отправляются.</li>
   <li><b>Список.</b> Вкладка с таблицей: сортировка по числу связей и году, поиск по тексту карточек, переход к человеку на схеме.</li>
   </ul>
 
@@ -634,6 +737,8 @@ function summary(){
 }
 
 summary(); renderList(); buildGraph(); setTimeout(fit,900);
+document.addEventListener('click',e=>{const g=e.target.closest('[data-goto]');if(g)document.querySelector(`[data-tab=${g.dataset.goto}]`).click();});
 </script>
+<script src="anketa.js"></script>
 </body>
 </html>
