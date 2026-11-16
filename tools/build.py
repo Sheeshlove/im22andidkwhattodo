@@ -38,7 +38,9 @@ for n in nodes.values():
     for m in n['members']:
         if m[0] not in people: errors.append(('member',n['name'],m[0]))
 print('errors',errors)
+PH=json.load(open('photos.json')) if __import__('os').path.exists('photos.json') else {}
 for p in people.values():
+    p.update({k:v for k,v in PH.get(p['name'],{}).items() if v})
     p.pop('nodes_raw',None); p.pop('direct_raw',None)
     p['reliability']=p.get('reliability','высокая').rstrip('.').split(',')[0]
 out={'people':list(people.values()),'nodes':list(nodes.values()),'direct':direct,

@@ -70,6 +70,13 @@ aside.controls h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;c
 .card .meta{color:var(--muted);font-size:13px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .card .tag{display:inline-block;border-radius:6px;padding:1px 7px;font-size:12px;background:var(--chip)}
 .card .tag.g{color:#fff;background:var(--c)}
+.card .photo{float:right;width:96px;height:96px;border-radius:50%;object-fit:cover;margin:0 0 8px 12px;border:3px solid var(--c);background:var(--chip)}
+.card .credit{clear:both;font-size:11px;color:var(--muted);margin-top:10px}
+.card .credit a{color:var(--muted)}
+td .av{width:28px;height:28px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:6px;border:2px solid var(--c);background:var(--chip)}
+.credits{font-size:12px;color:var(--muted);columns:2;column-gap:20px}
+.credits li{break-inside:avoid;margin-bottom:3px}
+@media (max-width:600px){.credits{columns:1}}
 .card .close{position:absolute;top:8px;right:8px;background:none;border:0;font-size:20px;cursor:pointer;color:var(--muted)}
 .card dl{margin:8px 0 0}
 .card dt{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:10px}
@@ -180,7 +187,7 @@ td .gd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:
     </div>
     <div class="stat" id="stat"></div>
     <div class="legend">
-      <b>Круг</b> — человек, размер по числу связей. <b>Ромб</b> — точка пересечения: вуз, ведомство, сделка. <b>Пунктир</b> — прямая связь: родство, партнёрство, начальник и подчинённый. Клик по узлу открывает карточку, двойной клик выделяет окружение. Колесо мыши масштабирует, узлы можно перетаскивать.
+      <b>Круг или портрет</b> — человек, размер по числу связей, цвет обводки по группе. <b>Ромб</b> — точка пересечения: вуз, ведомство, сделка. <b>Пунктир</b> — прямая связь: родство, партнёрство, начальник и подчинённый. Клик по узлу открывает карточку, двойной клик выделяет окружение. Колесо мыши масштабирует, узлы можно перетаскивать.
     </div>
   </aside>
   <div class="canvas">
@@ -274,7 +281,7 @@ function buildGraph(){
   const people=DATA.people.filter(personVisible);
   const pset=new Set(people.map(p=>p.id));
   const nodes=[]; const edges=[];
-  for(const p of people) nodes.push({id:p.id,kind:'p',ref:p,r:4+Math.min(10,Math.sqrt(p.deg)*1.6)});
+  for(const p of people) nodes.push({id:p.id,kind:'p',ref:p,r:(p.photo?8:4)+Math.min(10,Math.sqrt(p.deg)*1.6)});
   for(const n of DATA.nodes){ if(!state.cats.has(n.cat)) continue; const mem=n.members.filter(m=>pset.has(m[0])); if(mem.length<1) continue; if(mem.length<2 && !(state.focus===('#'+n.name))) continue; nodes.push({id:'#'+n.name,kind:'n',ref:n,r:6+Math.min(12,mem.length*0.8)}); for(const [m,r] of mem) edges.push({source:m,target:'#'+n.name,kind:'node',label:r}); }
   for(const [a,b,l] of DATA.direct) if(pset.has(a)&&pset.has(b)) edges.push({source:a,target:b,kind:'direct',label:l});
   for(const n of nodes){ const c=posCache.get(n.id); if(c){n.x=c.x;n.y=c.y;} else { const gi=n.kind==='p'?n.ref.gi:3; const ang=gi/7*Math.PI*2; n.x=W()/2+Math.cos(ang)*250+(Math.random()-.5)*80; n.y=H()/2+Math.sin(ang)*250+(Math.random()-.5)*80; } }
@@ -293,11 +300,13 @@ function buildGraph(){
   nodeSel=gNodes.selectAll('g.n').data(nodes,d=>d.id).join(enter=>{
       const g=enter.append('g').attr('class','n').style('cursor','pointer');
       g.filter(d=>d.kind==='p').append('circle');
+      g.filter(d=>d.kind==='p'&&d.ref.photo).append('image').attr('href',d=>d.ref.photo).attr('preserveAspectRatio','xMidYMid slice').attr('pointer-events','none');
       g.filter(d=>d.kind==='n').append('rect');
       return g;
     });
-  nodeSel.select('circle').attr('r',d=>d.r).attr('fill',d=>GCOL[d.ref.gi]).attr('stroke','var(--panel)').attr('stroke-width',1.5)
+  nodeSel.select('circle').attr('r',d=>d.r).attr('fill',d=>GCOL[d.ref.gi]).attr('stroke',d=>d.ref.photo?GCOL[d.ref.gi]:'var(--panel)').attr('stroke-width',d=>d.ref.photo?2:1.5)
     .attr('stroke-dasharray',d=>d.ref.reliability==='низкая'?'2 2':null).attr('fill-opacity',d=>d.ref.tier===2?.75:1);
+  nodeSel.select('image').attr('x',d=>-d.r+1).attr('y',d=>-d.r+1).attr('width',d=>2*d.r-2).attr('height',d=>2*d.r-2).style('clip-path',d=>`circle(${d.r-1}px at ${d.r-1}px ${d.r-1}px)`);
   nodeSel.select('rect').attr('width',d=>d.r*1.5).attr('height',d=>d.r*1.5).attr('x',d=>-d.r*.75).attr('y',d=>-d.r*.75).attr('transform','rotate(45)').attr('fill','var(--node)').attr('stroke','var(--panel)').attr('stroke-width',1.5).attr('rx',2);
   nodeSel.on('click',(e,d)=>{e.stopPropagation(); openCard(d.id);}).on('dblclick',(e,d)=>{e.stopPropagation(); setFocus(d.id);})
     .call(d3.drag().on('start',(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y;}).on('end',(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;}));
@@ -365,7 +374,9 @@ function openCard(id, ensureVisible=true){
     // people met through nodes
     const met=new Map(); for(const l of nodes){ for(const m of NODE.get(l.id.slice(1)).members){ if(m[0]===id) continue; if(!met.has(m[0])) met.set(m[0],[]); met.get(m[0]).push(l.id.slice(1)); } }
     const metArr=[...met.entries()].sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]));
-    cardBody.innerHTML=`<h2>${esc(p.name)}</h2><div class="meta"><span class="tag g" style="--c:${GCOL[p.gi]}">${esc(p.group)}</span><span>${p.year??'год рождения уточнить'}</span><span class="tag">${TIERS[p.tier]}</span>${p.reliability!=='высокая'?`<span class="tag">данные: ${esc(p.reliability)}</span>`:''}</div>
+    const photo=p.photo?`<img class="photo" src="${esc(p.photo)}" alt="" style="--c:${GCOL[p.gi]}">`:'';
+    const credit=p.photo?`<div class="credit">Фото: ${esc(p.author||'автор не указан')}, ${esc(p.license||'лицензия не указана')}, <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(p.file.replace(/ /g,'_'))}" target="_blank" rel="noopener">Wikimedia Commons</a>${p.wiki?` · <a href="${esc(p.wiki)}" target="_blank" rel="noopener">Википедия</a>`:''}</div>`:(p.wiki?`<div class="credit"><a href="${esc(p.wiki)}" target="_blank" rel="noopener">Статья в Википедии</a></div>`:'');
+    cardBody.innerHTML=`${photo}<h2>${esc(p.name)}</h2><div class="meta"><span class="tag g" style="--c:${GCOL[p.gi]}">${esc(p.group)}</span><span>${p.year??'год рождения уточнить'}</span><span class="tag">${TIERS[p.tier]}</span>${p.reliability!=='высокая'?`<span class="tag">данные: ${esc(p.reliability)}</span>`:''}</div>
       <dl>
         <dt>Сейчас</dt><dd>${esc(p.now)}</dd>
         <dt>В 18–25 лет</dt><dd>${esc(p.youth)}</dd>
@@ -375,7 +386,7 @@ function openCard(id, ensureVisible=true){
         ${directs.length?`<dt>Прямые связи (${directs.length})</dt><dd><ul>${directs.map(l=>`<li>${personLink(l.id)}<br><span class="r">${esc(l.label)}</span></li>`).join('')}</ul></dd>`:''}
         ${metArr.length?`<dt>С кем пересекается (${metArr.length})</dt><dd><ul>${metArr.slice(0,40).map(([m,via])=>`<li>${personLink(m)}${via.length>1?` <span class="r">×${via.length}</span>`:''}<br><span class="r">${esc(via.join(', '))}</span></li>`).join('')}${metArr.length>40?`<li class="r">и ещё ${metArr.length-40}</li>`:''}</ul></dd>`:''}
       </dl>
-      <div class="actions"><button class="btn ghost" data-focus="${esc(id)}">Выделить окружение</button><button class="btn ghost" data-pa="${esc(id)}">Путь от…</button><button class="btn ghost" data-pb="${esc(id)}">…до</button></div>`;
+      <div class="actions"><button class="btn ghost" data-focus="${esc(id)}">Выделить окружение</button><button class="btn ghost" data-pa="${esc(id)}">Путь от…</button><button class="btn ghost" data-pb="${esc(id)}">…до</button></div>${credit}`;
   }
   cardBody.querySelectorAll('a[data-id]').forEach(a=>a.onclick=()=>{ const t=a.dataset.id; if(t[0]!=='#' && !personVisible(P.get(t))) revealPerson(P.get(t)); openCard(t); centerOn(t); });
   cardBody.querySelectorAll('[data-focus]').forEach(b=>b.onclick=()=>setFocus(b.dataset.focus));
@@ -437,7 +448,7 @@ function renderList(){
   let rows=DATA.people.filter(p=>(!g||p.group===g)&&(t===''||String(p.tier)===t)&&(!r||p.reliability===r)&&(!v||(p.name+' '+p.now+' '+p.youth+' '+p.rise+' '+(p.connect||'')).toLowerCase().includes(v)));
   rows.sort((a,b)=>{ let x=a[sortK],y=b[sortK]; if(x==null) x=sortDir<0?-1:9999; if(y==null) y=sortDir<0?-1:9999; return (x>y?1:x<y?-1:0)*sortDir || a.name.localeCompare(b.name); });
   document.querySelectorAll('#tbl th').forEach(th=>th.classList.toggle('sorted',th.dataset.k===sortK));
-  document.querySelector('#tbl tbody').innerHTML=rows.map(p=>`<tr><td class="name"><span class="gd" style="--c:${GCOL[p.gi]}"></span><a data-id="${esc(p.id)}">${esc(p.name)}</a></td><td>${p.year??'?'}</td><td>${esc(p.group)}</td><td>${TIERS[p.tier]}</td><td>${p.deg}</td><td>${esc(p.now)}</td><td>${esc(p.youth)}</td><td>${esc(p.rise)}</td><td>${esc(p.reliability)}</td></tr>`).join('');
+  document.querySelector('#tbl tbody').innerHTML=rows.map(p=>`<tr><td class="name">${p.photo?`<img class="av" src="${esc(p.photo)}" alt="" loading="lazy" style="--c:${GCOL[p.gi]}">`:`<span class="gd" style="--c:${GCOL[p.gi]}"></span>`}<a data-id="${esc(p.id)}">${esc(p.name)}</a></td><td>${p.year??'?'}</td><td>${esc(p.group)}</td><td>${TIERS[p.tier]}</td><td>${p.deg}</td><td>${esc(p.now)}</td><td>${esc(p.youth)}</td><td>${esc(p.rise)}</td><td>${esc(p.reliability)}</td></tr>`).join('');
   document.getElementById('lstat').textContent=`${rows.length} из ${DATA.people.length}`;
   document.querySelectorAll('#tbl a[data-id]').forEach(a=>a.onclick=()=>{ document.querySelector('[data-tab=graphView]').click(); const p=P.get(a.dataset.id); revealPerson(p); setTimeout(()=>{openCard(p.id); state.focus=p.id; state.path=null; applyHighlight(); centerOn(p.id);},80); });
 }
@@ -452,9 +463,10 @@ function summary(){
   const topNodes=[...DATA.nodes].sort((a,b)=>b.members.length-a.members.length).slice(0,12);
   const isolated=ppl.filter(p=>p.deg===0);
   const rel=['высокая','средняя','низкая'].map(r=>ppl.filter(p=>p.reliability===r).length);
+  const withPhoto=ppl.filter(p=>p.photo);
   document.getElementById('prose').innerHTML=`
   <h2>Сводка</h2>
-  <div class="kpi"><div><b>${ppl.length}</b><span>человек на схеме</span></div><div><b>${DATA.nodes.length}</b><span>точек пересечения</span></div><div><b>${DATA.direct.length}</b><span>прямых связей</span></div><div><b>${isolated.length}</b><span>без связей со старой сетью</span></div></div>
+  <div class="kpi"><div><b>${ppl.length}</b><span>человек на схеме</span></div><div><b>${withPhoto.length}</b><span>с фотографией</span></div><div><b>${DATA.nodes.length}</b><span>точек пересечения</span></div><div><b>${DATA.direct.length}</b><span>прямых связей</span></div><div><b>${isolated.length}</b><span>без связей со старой сетью</span></div></div>
   <p>Выборка: верх российского списка Forbes 2026 года, главы госкомпаний, ключевые чиновники и силовики, затем две сотни кандидатов из досье. Схема разделена на три слоя: <b>ядро</b> (${byT[0]}), <b>первая сотня</b> кандидатов (${byT[1]}) и <b>второй эшелон</b> (${byT[2]}). По умолчанию включены первые два, второй эшелон добавляется галочкой. Состояние на ноябрь 2026 года.</p>
   <h3>Группы</h3>
   <div class="bars">${GROUPS.map((g,i)=>`<div><span><span class="sw" style="--c:${GCOL[i]}"></span>${g}</span><i style="width:${byG[i]/Math.max(...byG)*100}%;background:${GCOL[i]}"></i><span>${byG[i]}</span></div>`).join('')}</div>
@@ -535,6 +547,9 @@ function summary(){
   <h2>Ограничения</h2>
   <p>Связь на схеме означает задокументированное пересечение: общий вуз, место работы, сделка, совместное владение или родство. Она не означает дружбу, сговор или зависимость. Биографии сжаты до нескольких строк и собраны по открытым публикациям, отдельные даты могут расходиться с другими источниками на год. Часть фигур уже не живёт в России или потеряла активы, это отмечено в карточках.</p>
   <p>Надёжность данных по оценке досье: высокая у ${rel[0]} человек, средняя у ${rel[1]}, низкая у ${rel[2]}. Люди с низкой надёжностью нарисованы пунктирным контуром, их должности и даты нужно проверять перед использованием. У ${ppl.filter(p=>p.year==null).length} человек год рождения не установлен.</p>
+  <h3>Фотографии</h3>
+  <p>Портреты взяты из Wikimedia Commons через Wikidata: для каждого человека выбрана запись с совпадающим годом рождения. У ${ppl.length-withPhoto.length} человек свободного фото нет, они показаны цветной точкой. Авторы и лицензии:</p>
+  <details><summary>Список источников (${withPhoto.length})</summary><ul class="credits">${withPhoto.sort((a,b)=>a.name.localeCompare(b.name)).map(p=>`<li>${esc(p.name)}: <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(p.file.replace(/ /g,'_'))}" target="_blank" rel="noopener">${esc(p.file)}</a>, ${esc(p.author||'автор не указан')}, ${esc(p.license||'')}</li>`).join('')}</ul></details>
   <p>Источники оценок состояний и статистики: рейтинг Forbes 2026 года, обзор Forbes Education об образовании миллиардеров, рейтинг АПЭК «100 ведущих политиков», публикации о перестановках в правительстве в октябре 2026 года.</p>`;
 }
 
