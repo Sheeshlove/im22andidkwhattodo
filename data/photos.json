@@ -435,10 +435,6 @@
 "author": "Maxim Marmur",
 "license": "CC BY-SA 4.0"
 },
-"Сергей Попов": {
-"wd": "Q102248720",
-"wiki": null
-},
 "Дмитрий Рыболовлев": {
 "wd": "Q983847",
 "wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D1%8B%D0%B1%D0%BE%D0%BB%D0%BE%D0%B2%D0%BB%D0%B5%D0%B2,_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
@@ -2459,10 +2455,6 @@
 "author": "duma.gov.ru",
 "license": "CC BY 4.0"
 },
-"Виктор Семёнов": {
-"wd": "Q4415788",
-"wiki": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%BC%D1%91%D0%BD%D0%BE%D0%B2,_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87_(%D0%B3%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C)"
-},
 "Александр Островский": {
 "wd": "Q55102335",
 "wiki": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
@@ -2498,5 +2490,709 @@
 "Павел Маринычев": {
 "wd": "Q137863115",
 "wiki": null
+},
+"Сергей Сергеевич Иванов": {
+"wd": "Q29865118",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87_(%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B5%D1%86)",
+"photo": "img/sergei-sergeevich-ivanov.jpg",
+"file": "Sergey Sergeevich Ivanov.jpg",
+"author": "Presidential Press and Information Office",
+"license": "CC BY 4.0"
+},
+"Ирина Роднина": {
+"wd": "Q233812",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B4%D0%BD%D0%B8%D0%BD%D0%B0,_%D0%98%D1%80%D0%B8%D0%BD%D0%B0_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0",
+"photo": "img/irina-rodnina.jpg",
+"file": "Irina Rodnina 2018.jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Владислав Третьяк": {
+"wd": "Q316864",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B5%D1%82%D1%8C%D1%8F%D0%BA,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/vladislav-tretyak.jpg",
+"file": "Vladislav Tretiak.JPG",
+"author": "Alexey Chernyadyev",
+"license": "CC BY 3.0"
+},
+"Вячеслав Фетисов": {
+"wd": "Q553302",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A4%D0%B5%D1%82%D0%B8%D1%81%D0%BE%D0%B2,_%D0%92%D1%8F%D1%87%D0%B5%D1%81%D0%BB%D0%B0%D0%B2_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/vyacheslav-fetisov.jpg",
+"file": "Viacheslav Fetisov 2015.jpg",
+"author": "Press Service",
+"license": "CC BY 4.0"
+},
+"Александр Карелин": {
+"wd": "Q187247",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D0%B5%D0%BB%D0%B8%D0%BD,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/aleksandr-karelin.jpg",
+"file": "Сенатор Карелин.jpg",
+"author": "Пресс-служба Совета Федерации России",
+"license": "CC BY 4.0"
+},
+"Станислав Поздняков": {
+"wd": "Q940359",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B7%D0%B4%D0%BD%D1%8F%D0%BA%D0%BE%D0%B2,_%D0%A1%D1%82%D0%B0%D0%BD%D0%B8%D1%81%D0%BB%D0%B0%D0%B2_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/stanislav-pozdnyakov.jpg",
+"file": "2021 Stanislav Pozdnyakov.png",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Михаил Мамиашвили": {
+"wd": "Q1661985",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BC%D0%B8%D0%B0%D1%88%D0%B2%D0%B8%D0%BB%D0%B8,_%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%93%D0%B5%D1%80%D0%B0%D0%B7%D0%B8%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/mihail-mamiashvili.jpg",
+"file": "Mikhail Mamiashvili RN 09-2013.jpg",
+"author": "A.Savin",
+"license": "CC BY-SA 3.0"
+},
+"Евгений Плющенко": {
+"wd": "Q992223",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D1%8E%D1%89%D0%B5%D0%BD%D0%BA%D0%BE,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/evgenii-plyuschenko.jpg",
+"file": "Yevgeny Plushenko at the Champions Union show.png",
+"author": "Divmel ic",
+"license": "CC BY-SA 4.0"
+},
+"Этери Тутберидзе": {
+"wd": "Q5402587",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D1%83%D1%82%D0%B1%D0%B5%D1%80%D0%B8%D0%B4%D0%B7%D0%B5,_%D0%AD%D1%82%D0%B5%D1%80%D0%B8_%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B5%D0%B2%D0%BD%D0%B0",
+"photo": "img/eteri-tutberidze.jpg",
+"file": "Eteri Tutberidze in 2018 (cropped).jpg",
+"author": "Пресс-служба Мэра и Правительства Москвы. Евгений Самарин",
+"license": "CC BY 4.0"
+},
+"Ирина Винер-Усманова": {
+"wd": "Q2288379",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BD%D0%B5%D1%80,_%D0%98%D1%80%D0%B8%D0%BD%D0%B0_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%BD%D0%B0",
+"photo": "img/irina-viner-usmanova.jpg",
+"file": "Irina Viner-Usmanova with Azerbaijan's Order of Friendship.jpg",
+"author": "Press Service of the President of the Republic of Azerbaijan",
+"license": "CC BY 4.0"
+},
+"Шамиль Тарпищев": {
+"wd": "Q3596054",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B0%D1%80%D0%BF%D0%B8%D1%89%D0%B5%D0%B2,_%D0%A8%D0%B0%D0%BC%D0%B8%D0%BB%D1%8C_%D0%90%D0%BD%D0%B2%D1%8F%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/shamil-tarpischev.jpg",
+"file": "Shamil Tarpishchev 2018-06-27.jpg",
+"author": "Press-office of the President of the Russian Federation",
+"license": "CC BY 4.0"
+},
+"Олег Матыцин": {
+"wd": "Q26255418",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%82%D1%8B%D1%86%D0%B8%D0%BD,_%D0%9E%D0%BB%D0%B5%D0%B3_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/oleg-matycin.jpg",
+"file": "Oleg Matytsin (2020-02-13).jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Денис Мацуев": {
+"wd": "Q739505",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%86%D1%83%D0%B5%D0%B2,_%D0%94%D0%B5%D0%BD%D0%B8%D1%81_%D0%9B%D0%B5%D0%BE%D0%BD%D0%B8%D0%B4%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/denis-macuev.jpg",
+"file": "Vladimir Putin at award ceremonies (2025-12-24) 28.jpg",
+"author": "kremlin.ru",
+"license": "CC BY 4.0"
+},
+"Андрей Малахов": {
+"wd": "Q502325",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BB%D0%B0%D1%85%D0%BE%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-malahov.jpg",
+"file": "Andrey Malakhov (10.24.2011).JPG",
+"author": "Doniyor Sharipov, Dilbar Rahmonova and others",
+"license": "CC BY-SA 3.0"
+},
+"Владимир Соловьёв": {
+"wd": "Q278625",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%BB%D0%BE%D0%B2%D1%8C%D1%91%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%A0%D1%83%D0%B4%D0%BE%D0%BB%D1%8C%D1%84%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/vladimir-solovev.jpg",
+"file": "Владимир Соловьев (cropped).jpg",
+"author": "Unknown authorUnknown author",
+"license": "CC BY 3.0"
+},
+"Гарик Мартиросян": {
+"wd": "Q2389088",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%BE%D1%81%D1%8F%D0%BD,_%D0%93%D0%B0%D1%80%D0%B8%D0%BA_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/garik-martirosyan.jpg",
+"file": "Мартиросян, Гарик Юрьевич .jpg",
+"author": "Максим Стоялов",
+"license": "CC BY-SA 4.0"
+},
+"Артур Джанибекян": {
+"wd": "Q4159890",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%94%D0%B6%D0%B0%D0%BD%D0%B8%D0%B1%D0%B5%D0%BA%D1%8F%D0%BD,_%D0%90%D1%80%D1%82%D1%83%D1%80_%D0%9E%D1%82%D0%B0%D1%80%D0%B8%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/artur-dzhanibekyan.jpg",
+"file": "Artur Janibekyan 2017.jpg",
+"author": "Фотограф — Сергей Михеев; правообладатель — Артур Джанибекян",
+"license": "CC BY-SA 4.0"
+},
+"Тимати (Тимур Юнусов)": {
+"wd": "Q176846",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D0%BC%D0%B0%D1%82%D0%B8",
+"photo": "img/timati-timur-yunusov.jpg",
+"file": "Concert «Crimean spring. Five years in his native Harbor» 48 (cropped).jpg",
+"author": "Министерство культуры Республики Крым",
+"license": "CC BY 4.0"
+},
+"Тина Канделаки": {
+"wd": "Q303918",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BD%D0%B4%D0%B5%D0%BB%D0%B0%D0%BA%D0%B8,_%D0%A2%D0%B8%D0%BD%D0%B0",
+"photo": "img/tina-kandelaki.jpg",
+"file": "Тина Канделаки (пресс-подход) на VK Fest 5 (cropped).jpg",
+"author": "Okras",
+"license": "CC BY-SA 4.0"
+},
+"Митрополит Тихон (Шевкунов)": {
+"wd": "Q4458638",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%85%D0%BE%D0%BD_(%D0%A8%D0%B5%D0%B2%D0%BA%D1%83%D0%BD%D0%BE%D0%B2)",
+"photo": "img/mitropolit-tihon-shevkunov.jpg",
+"file": "Епископ Тихон (Шевкунов) на открытии музейно-выставочного комплекса «Россия – Моя история» в Ставрополе.jpg",
+"author": "Пресс-служба Ставропольской Епархии from Ставрополь, Россия",
+"license": "CC BY 2.0"
+},
+"Игорь Крутой": {
+"wd": "Q2631745",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D1%83%D1%82%D0%BE%D0%B9,_%D0%98%D0%B3%D0%BE%D1%80%D1%8C_%D0%AF%D0%BA%D0%BE%D0%B2%D0%BB%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/igor-krutoi.jpg",
+"file": "Igor Krutoy (2020-02-05).jpg",
+"author": "Александр Ерашов",
+"license": "CC BY 4.0"
+},
+"Юрий Башмет": {
+"wd": "Q156546",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BC%D0%B5%D1%82,_%D0%AE%D1%80%D0%B8%D0%B9_%D0%90%D0%B1%D1%80%D0%B0%D0%BC%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/yurii-bashmet.jpg",
+"file": "Vladimir Putin at award ceremonies (2026-06-12) 04.jpg",
+"author": "kremlin.ru",
+"license": "CC BY 4.0"
+},
+"Владимир Спиваков": {
+"wd": "Q579170",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D0%B2%D0%B0%D0%BA%D0%BE%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%A2%D0%B5%D0%BE%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/vladimir-spivakov.jpg",
+"file": "Rustem Khamitov and Vladimir Spivakov (2014-10-14) 10.jpg",
+"author": "glavarb.ru",
+"license": "CC BY 4.0"
+},
+"Евгений Миронов": {
+"wd": "Q1393540",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D1%80%D0%BE%D0%BD%D0%BE%D0%B2,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%92%D0%B8%D1%82%D0%B0%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/evgenii-mironov.jpg",
+"file": "Yevgeny Mironov, 2018.jpg",
+"author": "Пресс-служба Мэра и Правительства Москвы",
+"license": "CC BY 4.0"
+},
+"Фёдор Овчинников": {
+"wd": "Q107358757",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B2%D1%87%D0%B8%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2,_%D0%A4%D1%91%D0%B4%D0%BE%D1%80_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/fedor-ovchinnikov.jpg",
+"file": "Fyodor Ovchinnikov, 2020.jpg",
+"author": "Forbes",
+"license": "CC BY 3.0"
+},
+"Максим Ноготков": {
+"wd": "Q4327004",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D0%B3%D0%BE%D1%82%D0%BA%D0%BE%D0%B2,_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87"
+},
+"Артемий Лебедев": {
+"wd": "Q2273039",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B1%D0%B5%D0%B4%D0%B5%D0%B2,_%D0%90%D1%80%D1%82%D0%B5%D0%BC%D0%B8%D0%B9_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/artemii-lebedev.jpg",
+"file": "Artemy Lebedev 2020.png",
+"author": "Маткульт-привет! :: Алексей Савватеев и Ко",
+"license": "CC BY 3.0"
+},
+"Игорь Ашманов": {
+"wd": "Q4073516",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%90%D1%88%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2,_%D0%98%D0%B3%D0%BE%D1%80%D1%8C_%D0%A1%D1%82%D0%B0%D0%BD%D0%B8%D1%81%D0%BB%D0%B0%D0%B2%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/igor-ashmanov.jpg",
+"file": "Igor Ashmanov.jpg",
+"author": "Yustas",
+"license": "CC BY-SA 3.0"
+},
+"Владимир Кехман": {
+"wd": "Q4219878",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B5%D1%85%D0%BC%D0%B0%D0%BD,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%90%D0%B1%D1%80%D0%B0%D0%BC%D0%BE%D0%B2%D0%B8%D1%87"
+},
+"Сергей Лисовский": {
+"wd": "Q4263286",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/sergei-lisovskii.jpg",
+"file": "Sergey Lisovskiy.jpg",
+"author": "Пресс-служба Совета Федерации Федерального Собрания РФ",
+"license": "CC BY 4.0"
+},
+"Лев Хасис": {
+"wd": "Q4496459",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A5%D0%B0%D1%81%D0%B8%D1%81,_%D0%9B%D0%B5%D0%B2_%D0%90%D1%80%D0%BE%D0%BD%D0%BE%D0%B2%D0%B8%D1%87"
+},
+"Ростислав Ордовский-Танаевский": {
+"wd": "Q7370020",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B4%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-%D0%A2%D0%B0%D0%BD%D0%B0%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%91%D0%BB%D0%B0%D0%BD%D0%BA%D0%BE,_%D0%A0%D0%BE%D1%81%D1%82%D0%B8%D1%81%D0%BB%D0%B0%D0%B2_%D0%92%D0%B0%D0%B4%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D1%87"
+},
+"Константин Ремчуков": {
+"wd": "Q4393205",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BC%D1%87%D1%83%D0%BA%D0%BE%D0%B2,_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD_%D0%92%D0%B0%D0%B4%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/konstantin-remchukov.jpg",
+"file": "Direct Line with Vladimir Putin (2014-04-17) 29.jpeg",
+"author": "The Presidential Press and Information Office",
+"license": "CC BY 4.0"
+},
+"Николай Цветков": {
+"wd": "Q4356903",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A6%D0%B2%D0%B5%D1%82%D0%BA%D0%BE%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87"
+},
+"Владимир Ресин": {
+"wd": "Q983851",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%81%D0%B8%D0%BD,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%98%D0%BE%D1%81%D0%B8%D1%84%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/vladimir-resin.jpg",
+"file": "Vladimir Putin at award ceremonies (2024-12-12) 10.jpg",
+"author": "kremlin.ru",
+"license": "CC BY 4.0"
+},
+"Валентина Терешкова": {
+"wd": "Q44371",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%80%D0%B5%D1%88%D0%BA%D0%BE%D0%B2%D0%B0,_%D0%92%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%BD%D0%B0",
+"photo": "img/valentina-tereshkova.jpg",
+"file": "1st meeting of 8th State Duma 07.jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Андрей Шаронов": {
+"wd": "Q4520700",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D1%80%D0%BE%D0%BD%D0%BE%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-sharonov.jpg",
+"file": "Andrey Sharonov 3.JPG",
+"author": "Андрей Бабуров",
+"license": "CC BY-SA 3.0"
+},
+"Сергей Глазьев": {
+"wd": "Q1381768",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%93%D0%BB%D0%B0%D0%B7%D1%8C%D0%B5%D0%B2,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/sergei-glazev.jpg",
+"file": "Sergey Glazyev, 2016.jpg",
+"author": "Press Service",
+"license": "CC BY 4.0"
+},
+"Константин Косачёв": {
+"wd": "Q736840",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%B0%D1%87%D0%B5%D0%B2,_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD_%D0%98%D0%BE%D1%81%D0%B8%D1%84%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/konstantin-kosachev.jpg",
+"file": "Konstantin Kosachev.jpg",
+"author": "Пресс-служба Совета Федерации Федерального Собрания РФ",
+"license": "CC BY 4.0"
+},
+"Михаил Фрадков": {
+"wd": "Q150080",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A4%D1%80%D0%B0%D0%B4%D0%BA%D0%BE%D0%B2,_%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%95%D1%84%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/mihail-fradkov.jpg",
+"file": "Visit of Mikhail Fradkov, Russian Prime Minister, to the EC - 2005.jpg",
+"author": "Georges Boulougouris",
+"license": "CC BY 4.0"
+},
+"Валерий Фальков": {
+"wd": "Q15066166",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%BB%D1%8C%D0%BA%D0%BE%D0%B2,_%D0%92%D0%B0%D0%BB%D0%B5%D1%80%D0%B8%D0%B9_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/valerii-falkov.jpg",
+"file": "FalkovVN.jpg",
+"author": "Tyumsu",
+"license": "CC BY-SA 3.0"
+},
+"Сергей Кравцов": {
+"wd": "Q55653685",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B0%D0%B2%D1%86%D0%BE%D0%B2,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/sergei-kravcov.jpg",
+"file": "Сергей Кравцов (14-08-2025) (cropped).jpg",
+"author": "Пресс-служба Минпросвещения России",
+"license": "CC BY 4.0"
+},
+"Владислав Шапша": {
+"wd": "Q60830932",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%BF%D1%88%D0%B0,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2_%D0%92%D0%B0%D0%BB%D0%B5%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/vladislav-shapsha.jpg",
+"file": "Shapsha.jpg",
+"author": "Press Service of the Prime Minister of the Russian Federation",
+"license": "CC BY 4.0"
+},
+"Алексей Цыденов": {
+"wd": "Q28729008",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A6%D1%8B%D0%B4%D0%B5%D0%BD%D0%BE%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9_%D0%A1%D0%B0%D0%BC%D0%B1%D1%83%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/aleksei-cydenov.jpg",
+"file": "Aleksey Tsydenov (2017-02-07) 2.jpg",
+"author": "The Russian Presidential Press and Information Office",
+"license": "CC BY 3.0"
+},
+"Виктор Томенко": {
+"wd": "Q54972564",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D0%BC%D0%B5%D0%BD%D0%BA%D0%BE,_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/viktor-tomenko.jpg",
+"file": "Viktor Tomenko (2018-08-31).jpg",
+"author": "Пресс-служба Президента Российской Федерации",
+"license": "CC BY 4.0"
+},
+"Ольга Голодец": {
+"wd": "Q3350421",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%BB%D0%BE%D0%B4%D0%B5%D1%86,_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%BD%D0%B0",
+"photo": "img/olga-golodec.jpg",
+"file": "Golodez ministr.jpeg",
+"author": "Пресс-служба Администрации Президента РФ",
+"license": "CC BY 4.0"
+},
+"Виктор Христенко": {
+"wd": "Q317667",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D0%BA%D0%BE,_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80_%D0%91%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/viktor-hristenko.jpg",
+"file": "Khristenko (cropped).jpg",
+"author": "Fry-09",
+"license": "Public domain"
+},
+"Дмитрий Рогозин": {
+"wd": "Q737463",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B3%D0%BE%D0%B7%D0%B8%D0%BD,_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%9E%D0%BB%D0%B5%D0%B3%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/dmitrii-rogozin.jpg",
+"file": "Дмитрий Рогозин - Роскосмос.jpg",
+"author": "Роскосмос",
+"license": "CC BY-SA 4.0"
+},
+"Юрий Борисов": {
+"wd": "Q16186988",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2,_%D0%AE%D1%80%D0%B8%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/yurii-borisov.jpg",
+"file": "Yury Borisov official portrait.png",
+"author": "government.ru",
+"license": "CC BY 4.0"
+},
+"Дмитрий Ливанов": {
+"wd": "Q4260940",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2,_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/dmitrii-livanov.jpg",
+"file": "Ливанов.png",
+"author": "Unknown authorUnknown author",
+"license": "CC BY 4.0"
+},
+"Мария Захарова": {
+"wd": "Q20812953",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0,_%D0%9C%D0%B0%D1%80%D0%B8%D1%8F_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%BD%D0%B0",
+"photo": "img/mariya-zaharova.jpg",
+"file": "Maria Zakharova (cropped) (2).jpg",
+"author": "Сурен",
+"license": "CC BY 4.0"
+},
+"Василий Небензя": {
+"wd": "Q1000053",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%B1%D0%B5%D0%BD%D0%B7%D1%8F,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/vasilii-nebenzya.jpg",
+"file": "Vasily Nebenzya at the 2019 St. Petersburg International Economic Forum.jpg",
+"author": "SeleznevPavel",
+"license": "CC BY-SA 4.0"
+},
+"Сергей Рябков": {
+"wd": "Q4402403",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D1%8F%D0%B1%D0%BA%D0%BE%D0%B2,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/sergei-ryabkov.jpg",
+"file": "Sergei Ryabkov.jpg",
+"author": "Mohammad Hassanzadeh",
+"license": "CC BY 4.0"
+},
+"Григорий Карасин": {
+"wd": "Q4214210",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D0%B0%D1%81%D0%B8%D0%BD,_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%91%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/grigorii-karasin.jpg",
+"file": "Grigory Karasin official portrait.jpg",
+"author": "Совет Федерации",
+"license": "CC BY 4.0"
+},
+"Алексей Пушков": {
+"wd": "Q4384817",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9F%D1%83%D1%88%D0%BA%D0%BE%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/aleksei-pushkov.jpg",
+"file": "Alexey Pushkov.jpg",
+"author": "Пресс-служба Совета Федерации Федерального Собрания РФ",
+"license": "CC BY 4.0"
+},
+"Анна Кузнецова": {
+"wd": "Q26836164",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0,_%D0%90%D0%BD%D0%BD%D0%B0_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%BD%D0%B0",
+"photo": "img/anna-kuznecova.jpg",
+"file": "1st meeting of 8th State Duma 61.jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Валентин Юмашев": {
+"wd": "Q1975794",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%AE%D0%BC%D0%B0%D1%88%D0%B5%D0%B2,_%D0%92%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD_%D0%91%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/valentin-yumashev.jpg",
+"file": "Valentin Yumashev (cropped) 2015.jpg",
+"author": "ГД РФ",
+"license": "CC BY 4.0"
+},
+"Александр Коновалов": {
+"wd": "Q1320379",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0%D0%BB%D0%BE%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87_(%D1%8E%D1%80%D0%B8%D1%81%D1%82)",
+"photo": "img/aleksandr-konovalov.jpg",
+"file": "Alexander Konovalov official portrait.png",
+"author": "www.ksrf.ru",
+"license": "CC BY 4.0"
+},
+"Владимир Филиппов": {
+"wd": "Q2636066",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A4%D0%B8%D0%BB%D0%B8%D0%BF%D0%BF%D0%BE%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/vladimir-filippov.jpg",
+"file": "Vladimir Filippov 2018.jpg",
+"author": "Press Service",
+"license": "CC BY 4.0"
+},
+"Ольга Любимова": {
+"wd": "Q83375533",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9B%D1%8E%D0%B1%D0%B8%D0%BC%D0%BE%D0%B2%D0%B0,_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0_%D0%91%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D0%BD%D0%B0",
+"photo": "img/olga-lyubimova.jpg",
+"file": "Olga Lyubimova in Torzhok, March 27, 2024.jpg",
+"author": "Пресс-служба Президента Российской Федерации",
+"license": "CC BY 4.0"
+},
+"Павел Крашенинников": {
+"wd": "Q4239942",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2,_%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/pavel-krasheninnikov.jpg",
+"file": "Pavel Krasheninnikov (24-11-2020) (cropped).jpg",
+"author": "State Duma",
+"license": "CC BY 4.0"
+},
+"Элла Памфилова": {
+"wd": "Q458100",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BC%D1%84%D0%B8%D0%BB%D0%BE%D0%B2%D0%B0,_%D0%AD%D0%BB%D0%BB%D0%B0_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%BD%D0%B0",
+"photo": "img/ella-pamfilova.jpg",
+"file": "Элла Памфилова в ЦИК России (cropped).jpg",
+"author": "Иван3777",
+"license": "CC BY-SA 4.0"
+},
+"Татьяна Москалькова": {
+"wd": "Q4303668",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D1%81%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D0%BE%D0%B2%D0%B0,_%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%BD%D0%B0",
+"photo": "img/tatyana-moskalkova.jpg",
+"file": "Moskalkova 2023.jpg",
+"author": "Пресс-служба Президента Российской Федерации",
+"license": "CC BY 4.0"
+},
+"Андрей Травников": {
+"wd": "Q41657764",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%B2%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-travnikov.jpg",
+"file": "Andrei Travnikov.jpg",
+"author": "Пресс-служба Президента Российской Федерации",
+"license": "CC BY 4.0"
+},
+"Андрей Липов": {
+"wd": "Q97661714",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D0%BF%D0%BE%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-lipov.jpg",
+"file": "Андрей Липов.jpg",
+"author": "Presidential Press Office",
+"license": "CC BY 4.0"
+},
+"Антон Златопольский": {
+"wd": "Q14848579",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%97%D0%BB%D0%B0%D1%82%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9,_%D0%90%D0%BD%D1%82%D0%BE%D0%BD_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/anton-zlatopolskii.jpg",
+"file": "Антон Златопольский (29-01-2026) (cropped).jpg",
+"author": "Пресс-служба Государственной Думы РФ",
+"license": "CC BY 4.0"
+},
+"Игорь Руденя": {
+"wd": "Q5465510",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%B4%D0%B5%D0%BD%D1%8F,_%D0%98%D0%B3%D0%BE%D1%80%D1%8C_%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/igor-rudenya.jpg",
+"file": "Igor Rudenya.jpg",
+"author": "Пресс-служба Президента Российской Федерации.",
+"license": "CC BY 4.0"
+},
+"Ирина Яровая": {
+"wd": "Q4538691",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%AF%D1%80%D0%BE%D0%B2%D0%B0%D1%8F,_%D0%98%D1%80%D0%B8%D0%BD%D0%B0_%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%BD%D0%B0",
+"photo": "img/irina-yarovaya.jpg",
+"file": "Ирина Яровая (24-09-2025) (cropped).jpg",
+"author": "Пресс-служба Госдумы РФ",
+"license": "CC BY 4.0"
+},
+"Максим Акимов": {
+"wd": "Q45837991",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B8%D0%BC%D0%BE%D0%B2,_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/maksim-akimov.jpg",
+"file": "Maxim Akimov.png",
+"author": "Government.ru",
+"license": "CC BY-SA 4.0"
+},
+"Светлана Чупшева": {
+"wd": "Q65030546",
+"wiki": null,
+"photo": "img/svetlana-chupsheva.jpg",
+"file": "Светлана Чупшева на встрече с В.В.Путиным.jpg",
+"author": "Presidential Press and Information Office",
+"license": "CC BY 4.0"
+},
+"Анатолий Аксаков": {
+"wd": "Q4059843",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D1%81%D0%B0%D0%BA%D0%BE%D0%B2,_%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D0%B9_%D0%93%D0%B5%D0%BD%D0%BD%D0%B0%D0%B4%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/anatolii-aksakov.jpg",
+"file": "Anatoly Aksakov 2018.jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Андрей Рудской": {
+"wd": "Q4399758",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%B4%D1%81%D0%BA%D0%BE%D0%B9,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-rudskoi.jpg",
+"file": "Andrey Rudskoy 2018.jpg",
+"author": "Jérémy Barande",
+"license": "CC BY-SA 2.0"
+},
+"Сергей Степашин": {
+"wd": "Q313989",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B5%D0%BF%D0%B0%D1%88%D0%B8%D0%BD,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%92%D0%B0%D0%B4%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/sergei-stepashin.jpg",
+"file": "StepashinSV-2002.jpg",
+"author": "Leo Medvedev/Лев Леонидович Медведев",
+"license": "CC BY-SA 4.0"
+},
+"Андрей Бельянинов": {
+"wd": "Q4083373",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D1%8C%D1%8F%D0%BD%D0%B8%D0%BD%D0%BE%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-belyaninov.jpg",
+"file": "Andrey Belyaninov 2018.jpg",
+"author": "council.gov.ru",
+"license": "CC BY 4.0"
+},
+"Владимир Устинов": {
+"wd": "Q1138430",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D1%82%D0%B8%D0%BD%D0%BE%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87_(%D1%8E%D1%80%D0%B8%D1%81%D1%82)",
+"photo": "img/vladimir-ustinov.jpg",
+"file": "RIAN archive 628836 Prosecutor General Vladimir Ustinov.jpg",
+"author": "Dmitryi Donskoy / Дмитрий Донской",
+"license": "CC BY-SA 3.0"
+},
+"Юрий Чайка": {
+"wd": "Q612244",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D0%B9%D0%BA%D0%B0,_%D0%AE%D1%80%D0%B8%D0%B9_%D0%AF%D0%BA%D0%BE%D0%B2%D0%BB%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/yurii-chaika.jpg",
+"file": "Yuriy Chaika official portrait.jpg",
+"author": "Unknown authorUnknown author",
+"license": "CC BY 4.0"
+},
+"Рашид Нургалиев": {
+"wd": "Q357321",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9D%D1%83%D1%80%D0%B3%D0%B0%D0%BB%D0%B8%D0%B5%D0%B2,_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4_%D0%93%D1%83%D0%BC%D0%B0%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/rashid-nurgaliev.jpg",
+"file": "Рашид Нургалиев (Rashid Nurgaliyev) (2012).jpeg",
+"author": "premier.gov.ru",
+"license": "CC BY 4.0"
+},
+"Никита Михалков": {
+"wd": "Q55207",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BA%D0%BE%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/nikita-mihalkov.jpg",
+"file": "Mikhalkov 2022.jpg",
+"author": "Пресс-служба Президента Российской Федерации",
+"license": "CC BY 4.0"
+},
+"Андрей Кончаловский": {
+"wd": "Q55208",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%87%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-konchalovskii.jpg",
+"file": "2023 Andrei Konchalovsky (cropped).jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Ксения Собчак": {
+"wd": "Q287099",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B1%D1%87%D0%B0%D0%BA,_%D0%9A%D1%81%D0%B5%D0%BD%D0%B8%D1%8F_%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%BD%D0%B0",
+"photo": "img/kseniya-sobchak.jpg",
+"file": "Ksenia Sobchak 2017.jpg",
+"author": "Пресс-служба Президента России",
+"license": "CC BY 4.0"
+},
+"Евгений Примаков-младший": {
+"wd": "Q21154033",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BC%D0%B0%D0%BA%D0%BE%D0%B2,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/evgenii-primakov-mladshii.jpg",
+"file": "Yevgeny Primakov Jr. (2019-06-07).jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Сергей Королёв": {
+"wd": "Q112072473",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%91%D0%B2,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D0%B8%D1%87"
+},
+"Игорь Бабаев": {
+"wd": "Q65127296",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%B1%D0%B0%D0%B5%D0%B2,_%D0%98%D0%B3%D0%BE%D1%80%D1%8C_%D0%AD%D1%80%D0%B7%D0%BE%D0%BB%D0%BE%D0%B2%D0%B8%D1%87"
+},
+"Александр Савельев": {
+"wd": "Q28664692",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%B2%D0%B5%D0%BB%D1%8C%D0%B5%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
+},
+"Дмитрий Алексеев": {
+"wd": "Q112990560",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2,_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87"
+},
+"Денис Фёдоров": {
+"wd": "Q104622121",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2,_%D0%94%D0%B5%D0%BD%D0%B8%D1%81_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
+},
+"Николай Шульгинов": {
+"wd": "Q28664969",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/nikolai-shulginov.jpg",
+"file": "Николай Шульгинов (09-11-2021) (cropped).jpg",
+"author": "Пресс-служба Президента Республики Татарстан",
+"license": "CC BY 4.0"
+},
+"Пётр Толстой": {
+"wd": "Q4459965",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9,_%D0%9F%D1%91%D1%82%D1%80_%D0%9E%D0%BB%D0%B5%D0%B3%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/petr-tolstoi.jpg",
+"file": "Pyotr Tolstoy 2018.jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Андрей Исаев": {
+"wd": "Q4203535",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%B0%D0%B5%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%B8%D1%87",
+"photo": "img/andrei-isaev.jpg",
+"file": "Andrey Isayev 2018.jpg",
+"author": "duma.gov.ru",
+"license": "CC BY 4.0"
+},
+"Александр Козлов": {
+"wd": "Q16664506",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87_(%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA)",
+"photo": "img/aleksandr-kozlov.jpg",
+"file": "Alexander Kozlov official portrait.jpg",
+"author": "Минприроды России",
+"license": "CC BY 4.0"
+},
+"Сергей Катырин": {
+"wd": "Q4217551",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D1%8B%D1%80%D0%B8%D0%BD,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/sergei-katyrin.jpg",
+"file": "Sergey Katyrin 2022.jpg",
+"author": "council.gov.ru",
+"license": "CC BY 4.0"
+},
+"Олег Белавенцев": {
+"wd": "Q15972050",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D0%B0%D0%B2%D0%B5%D0%BD%D1%86%D0%B5%D0%B2,_%D0%9E%D0%BB%D0%B5%D0%B3_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/oleg-belavencev.jpg",
+"file": "Belaventsev O E.jpeg",
+"author": "Пресс-служба Президента России",
+"license": "CC BY 4.0"
+},
+"Юнус-Бек Евкуров": {
+"wd": "Q319464",
+"wiki": "https://ru.wikipedia.org/wiki/%D0%95%D0%B2%D0%BA%D1%83%D1%80%D0%BE%D0%B2,_%D0%AE%D0%BD%D1%83%D1%81-%D0%91%D0%B5%D0%BA_%D0%91%D0%B0%D0%BC%D0%B0%D1%82%D0%B3%D0%B8%D1%80%D0%B5%D0%B5%D0%B2%D0%B8%D1%87",
+"photo": "img/yunus-bek-evkurov.jpg",
+"file": "Official portrait of Yunus-bek Yevkurov (2024).jpg",
+"author": "Министерство обороны Российской Федерации",
+"license": "CC BY 4.0"
 }
 }
